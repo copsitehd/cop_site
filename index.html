@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>COP · Centro Odontológico Palhoça — Reabilitação Oral, Implantes e Sorrisos</title>
+<meta name="description" content="Há mais de 10 anos cuidando do sorriso de Palhoça. Especialistas em Reabilitação Oral, Implantes, Próteses, Ortodontia e Harmonização Facial. Agende sua avaliação." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Montserrat:wght@300;400;500;600;700&family=Allura&display=swap" rel="stylesheet">
+
+<style>
+/* ============== TOKENS ============== */
+:root{
+  --cream:#FCF7F1;
+  --ivory:#F4E8DC;
+  --sand:#EADCCC;
+  --rose:#CBA39B;
+  --rose-deep:#B5847C;
+  --mauve:#9C6F6A;
+  --wine:#6E2B38;
+  --wine-deep:#54202A;
+  --caramel:#BE8C5A;
+  --gold:#C2A35E;
+  --gold-soft:#D8C193;
+  --sage:#7E8C6A;
+  --espresso:#3A2A24;
+  --espresso-soft:#6E574D;
+  --line:#E3D3C2;
+  --white:#ffffff;
+  --wa:#25D366;
+  --wa-deep:#128C5A;
+
+  --serif:'Cormorant Garamond', Georgia, serif;
+  --sans:'Montserrat', system-ui, sans-serif;
+  --script:'Allura', cursive;
+
+  --shadow-sm:0 4px 18px -8px rgba(58,42,36,.25);
+  --shadow-md:0 18px 50px -22px rgba(58,42,36,.45);
+  --shadow-lg:0 40px 90px -40px rgba(84,32,42,.55);
+  --radius:18px;
+  --maxw:1180px;
+  --ease:cubic-bezier(.22,.61,.36,1);
+}
+
+/* ============== RESET ============== */
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--sans);
+  color:var(--espresso);
+  background:var(--cream);
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+ul{list-style:none}
+::selection{background:var(--rose);color:#fff}
+
+/* grain overlay */
+body::before{
+  content:"";position:fixed;inset:0;z-index:9999;pointer-events:none;opacity:.035;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ============== UTILITIES ============== */
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+.eyebrow{
+  font-family:var(--sans);font-size:.72rem;font-weight:600;letter-spacing:.32em;
+  text-transform:uppercase;color:var(--mauve);display:inline-flex;align-items:center;gap:12px;
+}
+.eyebrow::before{content:"";width:34px;height:1px;background:var(--caramel);display:inline-block}
+.script{font-family:var(--script);font-weight:400;line-height:.8}
+h1,h2,h3{font-family:var(--serif);font-weight:600;line-height:1.04;letter-spacing:-.01em;color:var(--wine)}
+.section{padding:clamp(70px,9vw,130px) 0;position:relative}
+.btn{
+  display:inline-flex;align-items:center;gap:11px;font-family:var(--sans);font-weight:600;
+  font-size:.92rem;letter-spacing:.01em;padding:16px 28px;border-radius:100px;cursor:pointer;
+  border:1px solid transparent;transition:transform .4s var(--ease),box-shadow .4s var(--ease),background .3s;
+  white-space:normal;max-width:100%;text-align:center;justify-content:center;
+}
+.btn svg{width:18px;height:18px;flex:none}
+.btn-wa{background:var(--wa);color:#fff;box-shadow:0 14px 30px -12px rgba(18,140,90,.7)}
+.btn-wa:hover{transform:translateY(-3px);box-shadow:0 22px 44px -14px rgba(18,140,90,.8);background:#20bd5b}
+.btn-outline{background:transparent;color:var(--wine);border-color:var(--rose)}
+.btn-outline:hover{background:var(--wine);color:#fff;border-color:var(--wine);transform:translateY(-3px)}
+.btn-ghost{background:#fff;color:var(--wine);box-shadow:var(--shadow-sm)}
+.btn-ghost:hover{transform:translateY(-3px);box-shadow:var(--shadow-md)}
+
+/* reveal animation */
+.reveal{opacity:0;transform:translateY(34px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+.reveal.d1{transition-delay:.08s}.reveal.d2{transition-delay:.16s}.reveal.d3{transition-delay:.24s}
+.reveal.d4{transition-delay:.32s}.reveal.d5{transition-delay:.40s}
+
+/* ============== TOP BAR ============== */
+.topbar{
+  background:var(--wine-deep);color:#f3e4d8;font-size:.78rem;letter-spacing:.02em;
+}
+.topbar .wrap{display:flex;justify-content:space-between;align-items:center;gap:18px;min-height:42px;flex-wrap:wrap}
+.topbar a{display:inline-flex;align-items:center;gap:7px;color:#f3e4d8;opacity:.92}
+.topbar a:hover{opacity:1;color:var(--gold-soft)}
+.topbar svg{width:14px;height:14px;color:var(--gold-soft)}
+.topbar .tb-rating{display:inline-flex;align-items:center;gap:7px;font-weight:600}
+.tb-stars{color:var(--gold-soft);letter-spacing:1px}
+@media(max-width:760px){.topbar .tb-hide{display:none}}
+
+/* ============== HEADER ============== */
+header{
+  position:sticky;top:0;z-index:100;background:rgba(252,247,241,.82);
+  backdrop-filter:blur(14px);border-bottom:1px solid transparent;transition:.4s var(--ease);
+}
+header.scrolled{box-shadow:0 10px 40px -24px rgba(58,42,36,.4);border-color:var(--line)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;min-height:78px;gap:20px}
+.logo{display:flex;align-items:center;gap:13px}
+.logo-mark{
+  width:48px;height:48px;border-radius:50%;display:grid;place-items:center;flex:none;
+  background:linear-gradient(135deg,var(--wine),var(--mauve));color:#fff;
+  font-family:var(--serif);font-weight:700;font-size:1.25rem;letter-spacing:.02em;
+  box-shadow:0 8px 22px -10px rgba(110,43,56,.7);
+}
+.logo-txt b{font-family:var(--serif);font-size:1.18rem;font-weight:700;color:var(--wine);display:block;line-height:1}
+.logo-txt span{font-size:.62rem;letter-spacing:.28em;text-transform:uppercase;color:var(--mauve);font-weight:600}
+nav.main{display:flex;align-items:center;gap:30px}
+nav.main a.nl{font-size:.86rem;font-weight:500;color:var(--espresso);position:relative;padding:4px 0}
+nav.main a.nl::after{content:"";position:absolute;left:0;bottom:-2px;width:0;height:1.5px;background:var(--caramel);transition:width .35s var(--ease)}
+nav.main a.nl:hover::after{width:100%}
+.header-cta{display:flex;align-items:center;gap:14px}
+.burger{display:none;flex-direction:column;gap:5px;background:none;border:0;cursor:pointer;padding:8px}
+.burger span{width:24px;height:2px;background:var(--wine);border-radius:2px;transition:.3s}
+@media(max-width:980px){
+  nav.main{display:none}
+  .header-cta .btn span.lbl{display:none}
+  .burger{display:flex}
+}
+
+/* mobile drawer */
+.drawer{position:fixed;inset:0;z-index:200;background:var(--wine-deep);color:#f3e4d8;
+  display:flex;flex-direction:column;justify-content:center;gap:8px;padding:40px;
+  transform:translateX(100%);transition:transform .5s var(--ease)}
+.drawer.open{transform:none}
+.drawer a{font-family:var(--serif);font-size:1.8rem;color:#f3e4d8;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.12)}
+.drawer .btn{margin-top:24px;justify-content:center}
+.drawer-close{position:absolute;top:24px;right:24px;background:none;border:0;color:#f3e4d8;font-size:2rem;cursor:pointer;line-height:1}
+
+/* ============== HERO ============== */
+.hero{position:relative;overflow:hidden;background:
+  radial-gradient(120% 90% at 85% 0%,rgba(203,163,155,.42),transparent 55%),
+  radial-gradient(90% 80% at 5% 100%,rgba(190,140,90,.20),transparent 50%),
+  linear-gradient(180deg,var(--cream),var(--ivory));
+}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:54px;align-items:center;
+  padding:clamp(48px,7vw,96px) 0 clamp(60px,8vw,110px)}
+.hero h1{font-size:clamp(2.7rem,6vw,4.7rem);font-weight:600}
+.hero h1 .script{font-size:clamp(3.6rem,8vw,6.4rem);color:var(--caramel);display:inline-block;
+  transform:rotate(-3deg);margin:0 .06em;line-height:.6}
+.hero p.lead{font-size:1.1rem;color:var(--espresso-soft);max-width:34ch;margin:26px 0 34px;font-weight:400}
+.hero-actions{display:flex;gap:16px;flex-wrap:wrap;align-items:center}
+.hero-trust{margin-top:38px;display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+.gbadge{display:flex;align-items:center;gap:12px;background:#fff;border:1px solid var(--line);
+  padding:12px 18px;border-radius:14px;box-shadow:var(--shadow-sm)}
+.gbadge .g{width:26px;height:26px;flex:none}
+.gbadge b{font-family:var(--serif);font-size:1.5rem;color:var(--wine);line-height:1}
+.gbadge .gs{color:var(--gold);font-size:.8rem;letter-spacing:1px}
+.gbadge small{display:block;font-size:.72rem;color:var(--espresso-soft)}
+
+/* hero visual */
+.hero-visual{position:relative}
+.hero-photo{
+  position:relative;border-radius:200px 200px 22px 22px;overflow:hidden;aspect-ratio:4/5;
+  background:linear-gradient(160deg,var(--rose),var(--mauve) 60%,var(--wine));
+  box-shadow:var(--shadow-lg);border:8px solid #fff;
+}
+.ph{display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;
+  color:rgba(255,255,255,.9);text-align:center;gap:10px;padding:24px}
+.ph svg{width:54px;height:54px;opacity:.85}
+.ph .ph-cap{font-size:.74rem;letter-spacing:.18em;text-transform:uppercase;opacity:.78}
+.ph .ph-sub{font-family:var(--serif);font-style:italic;font-size:1.15rem}
+.hero-leaf{position:absolute;color:var(--sage);opacity:.5;z-index:-1}
+.float-card{position:absolute;background:#fff;border-radius:14px;box-shadow:var(--shadow-md);
+  padding:14px 16px;display:flex;align-items:center;gap:12px;animation:floaty 5s ease-in-out infinite}
+.float-card .ic{width:38px;height:38px;border-radius:10px;display:grid;place-items:center;flex:none;color:#fff}
+.float-card b{font-family:var(--serif);font-size:1.15rem;color:var(--wine);line-height:1;display:block}
+.float-card small{font-size:.68rem;color:var(--espresso-soft)}
+.fc-1{top:8%;left:-34px;animation-delay:.2s}
+.fc-2{bottom:9%;right:-28px;animation-delay:1.4s}
+@keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+@media(max-width:880px){
+  .hero-grid{grid-template-columns:1fr;text-align:center}
+  .hero p.lead{margin-left:auto;margin-right:auto}
+  .hero-actions,.hero-trust{justify-content:center}
+  .hero-visual{max-width:340px;margin:8px auto 0}
+  .float-card{display:none}
+}
+
+/* ============== MARQUEE ============== */
+.marquee{background:var(--wine);color:#f3e4d8;overflow:hidden;padding:18px 0;border-top:1px solid var(--wine-deep)}
+.marquee-track{display:flex;gap:0;white-space:nowrap;animation:scrollx 28s linear infinite;width:max-content}
+.marquee-track span{font-family:var(--serif);font-style:italic;font-size:1.35rem;padding:0 32px;display:inline-flex;align-items:center;gap:32px}
+.marquee-track span::after{content:"✦";color:var(--gold-soft);font-style:normal;font-size:.8rem}
+@keyframes scrollx{to{transform:translateX(-50%)}}
+
+/* ============== STATS ============== */
+.stats{background:var(--ivory)}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.stat{text-align:center;padding:14px}
+.stat b{font-family:var(--serif);font-size:clamp(2.4rem,5vw,3.4rem);color:var(--wine);font-weight:700;line-height:1;display:block}
+.stat span{font-size:.82rem;color:var(--espresso-soft);letter-spacing:.04em;display:block;margin-top:8px}
+.stat .plus{color:var(--caramel)}
+@media(max-width:680px){.stats-grid{grid-template-columns:1fr 1fr;gap:34px 16px}}
+
+/* ============== SECTION HEAD ============== */
+.shead{text-align:center;max-width:640px;margin:0 auto clamp(44px,5vw,68px)}
+.shead h2{font-size:clamp(2.1rem,4.6vw,3.3rem);margin-top:18px}
+.shead p{color:var(--espresso-soft);margin-top:18px;font-size:1.02rem}
+.shead .script{font-family:var(--script);color:var(--caramel);font-size:2.4rem;display:block}
+
+/* ============== SERVICES ============== */
+.serv-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.serv{position:relative;background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+  padding:34px 28px;transition:transform .45s var(--ease),box-shadow .45s var(--ease),border-color .4s;overflow:hidden}
+.serv::before{content:"";position:absolute;inset:0 0 auto 0;height:3px;
+  background:linear-gradient(90deg,var(--caramel),var(--rose));transform:scaleX(0);transform-origin:left;transition:transform .5s var(--ease)}
+.serv:hover{transform:translateY(-8px);box-shadow:var(--shadow-md);border-color:transparent}
+.serv:hover::before{transform:scaleX(1)}
+.serv .si{width:56px;height:56px;border-radius:14px;display:grid;place-items:center;margin-bottom:20px;
+  background:linear-gradient(140deg,var(--ivory),var(--sand));color:var(--wine);transition:.45s var(--ease)}
+.serv:hover .si{background:linear-gradient(140deg,var(--wine),var(--mauve));color:#fff;transform:rotate(-6deg)}
+.serv .si svg{width:28px;height:28px}
+.serv h3{font-size:1.4rem;margin-bottom:8px}
+.serv p{font-size:.9rem;color:var(--espresso-soft)}
+.serv .tag{position:absolute;top:22px;right:22px;font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;
+  font-weight:700;color:var(--caramel);background:var(--ivory);padding:5px 10px;border-radius:100px}
+@media(max-width:920px){.serv-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.serv-grid{grid-template-columns:1fr}}
+
+/* ============== WHY / DIFERENCIAIS ============== */
+.why{background:
+  radial-gradient(80% 120% at 100% 0%,rgba(190,140,90,.16),transparent 50%),
+  linear-gradient(180deg,var(--cream),var(--ivory))}
+.why-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:60px;align-items:center}
+.why-visual{position:relative}
+.why-photo{border-radius:22px;overflow:hidden;aspect-ratio:3/4;border:8px solid #fff;box-shadow:var(--shadow-lg);
+  background:linear-gradient(160deg,var(--sage),#5f6b50)}
+.why-photo.small{position:absolute;width:46%;aspect-ratio:1;right:-26px;bottom:-30px;border-radius:18px;
+  background:linear-gradient(160deg,var(--caramel),var(--wine))}
+.why-list{display:grid;gap:14px;margin-top:8px}
+.diff{display:flex;gap:18px;align-items:flex-start;background:#fff;border:1px solid var(--line);
+  border-radius:14px;padding:20px 22px;transition:transform .4s var(--ease),box-shadow .4s var(--ease)}
+.diff:hover{transform:translateX(6px);box-shadow:var(--shadow-sm)}
+.diff .di{width:46px;height:46px;border-radius:12px;flex:none;display:grid;place-items:center;color:#fff;
+  background:linear-gradient(140deg,var(--wine),var(--mauve))}
+.diff .di svg{width:24px;height:24px}
+.diff h3{font-size:1.25rem;color:var(--wine);margin-bottom:3px}
+.diff p{font-size:.88rem;color:var(--espresso-soft);line-height:1.5}
+@media(max-width:900px){.why-grid{grid-template-columns:1fr;gap:60px}.why-visual{max-width:420px;margin:0 auto}}
+
+/* ============== DOCTOR ============== */
+.doc{background:var(--wine);color:#f5e7da;position:relative;overflow:hidden}
+.doc::after{content:"";position:absolute;top:-120px;right:-120px;width:360px;height:360px;border-radius:50%;
+  background:radial-gradient(circle,rgba(194,163,94,.4),transparent 60%);pointer-events:none}
+.doc-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:56px;align-items:center;position:relative;z-index:1}
+.doc-photo{border-radius:18px 18px 120px 18px;overflow:hidden;aspect-ratio:4/5;border:8px solid rgba(255,255,255,.1);
+  background:linear-gradient(160deg,var(--rose),var(--mauve));box-shadow:var(--shadow-lg)}
+.doc .eyebrow{color:var(--gold-soft)}
+.doc .eyebrow::before{background:var(--gold-soft)}
+.doc h2{color:#fff;font-size:clamp(2rem,4.4vw,3.1rem);margin:18px 0 6px}
+.doc .crm{font-size:.78rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-soft)}
+.doc p.bio{margin:22px 0;color:#eed9c9;font-size:1.04rem;max-width:48ch}
+.doc-sign{font-family:var(--script);font-size:3rem;color:var(--gold-soft);line-height:.7;margin-top:10px}
+.doc-mini{display:flex;gap:28px;margin:26px 0 30px;flex-wrap:wrap}
+.doc-mini div b{font-family:var(--serif);font-size:1.9rem;color:#fff;display:block;line-height:1}
+.doc-mini div span{font-size:.76rem;color:var(--gold-soft)}
+@media(max-width:880px){.doc-grid{grid-template-columns:1fr;text-align:center}.doc-photo{max-width:340px;margin:0 auto}.doc .eyebrow,.doc-mini,.doc p.bio{justify-content:center;margin-left:auto;margin-right:auto}}
+
+/* ============== TEAM ============== */
+.team{background:linear-gradient(180deg,var(--cream),var(--ivory))}
+.team-photo{max-width:860px;margin:0 auto;border-radius:24px;overflow:hidden;border:8px solid #fff;
+  box-shadow:var(--shadow-lg);aspect-ratio:680/453;position:relative}
+.team-photo::after{content:"";position:absolute;inset:0;box-shadow:inset 0 -70px 70px -40px rgba(54,32,42,.4);pointer-events:none}
+.team-vals{display:flex;justify-content:center;gap:clamp(30px,6vw,60px);flex-wrap:wrap;margin-top:42px}
+.tv{text-align:center}
+.tv b{font-family:var(--serif);font-size:clamp(2rem,4vw,2.6rem);color:var(--wine);display:block;line-height:1}
+.tv .plus{color:var(--caramel)}
+.tv span{font-size:.82rem;color:var(--espresso-soft);margin-top:6px;display:block}
+
+/* ============== BEFORE / AFTER ============== */
+.ba-wrap{background:linear-gradient(180deg,var(--ivory),var(--cream))}
+.ba-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:38px;align-items:start;max-width:900px;margin:0 auto}
+.ba{position:relative;overflow:hidden;border-radius:20px;--pos:50%;box-shadow:var(--shadow-md);
+  border:6px solid #fff;cursor:ew-resize;user-select:none;background:#1a1414;touch-action:none}
+.ba img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;pointer-events:none}
+.ba-before-wrap{position:absolute;inset:0;clip-path:inset(0 calc(100% - var(--pos)) 0 0)}
+.ba-divider{position:absolute;top:0;bottom:0;left:var(--pos);width:3px;background:#fff;transform:translateX(-50%);
+  pointer-events:none;box-shadow:0 0 12px rgba(0,0,0,.35)}
+.ba-handle{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:46px;height:46px;border-radius:50%;
+  background:#fff;display:grid;place-items:center;color:var(--wine);box-shadow:var(--shadow-md)}
+.ba-handle svg{width:24px;height:24px}
+.ba-tag{position:absolute;bottom:14px;font-size:.64rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+  padding:6px 13px;border-radius:100px;color:#fff;pointer-events:none;backdrop-filter:blur(3px)}
+.ba-tag-before{left:14px;background:rgba(40,28,24,.6)}
+.ba-tag-after{right:14px;background:rgba(110,43,56,.78)}
+.ba-range{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:ew-resize;margin:0;padding:0}
+.ba-cap{text-align:center;margin-top:20px}
+.ba-cap b{font-family:var(--serif);font-size:1.4rem;color:var(--wine);display:block;line-height:1.1}
+.ba-cap span{font-size:.84rem;color:var(--espresso-soft)}
+@media(max-width:760px){.ba-grid{grid-template-columns:1fr;max-width:400px;gap:46px}}
+
+/* ============== TESTIMONIALS ============== */
+.tst-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.tst{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:32px 28px;position:relative;
+  transition:transform .45s var(--ease),box-shadow .45s var(--ease)}
+.tst:hover{transform:translateY(-6px);box-shadow:var(--shadow-md)}
+.tst .quote{font-family:var(--serif);font-size:4rem;color:var(--rose);line-height:.6;height:30px}
+.tst .stars{color:var(--gold);letter-spacing:2px;margin:6px 0 12px;font-size:.9rem}
+.tst p{font-family:var(--serif);font-style:italic;font-size:1.18rem;color:var(--espresso);line-height:1.4}
+.tst .who{display:flex;align-items:center;gap:12px;margin-top:22px;padding-top:18px;border-top:1px solid var(--line)}
+.tst .av{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;color:#fff;font-weight:600;font-family:var(--serif);
+  background:linear-gradient(140deg,var(--caramel),var(--wine))}
+.tst .who b{font-size:.92rem;color:var(--wine);display:block}
+.tst .who small{font-size:.72rem;color:var(--espresso-soft);display:inline-flex;align-items:center;gap:5px}
+@media(max-width:900px){.tst-grid{grid-template-columns:1fr}.tst{max-width:520px;margin:0 auto}}
+
+/* ============== CTA BAND ============== */
+.cta-band{position:relative;overflow:hidden;
+  background:linear-gradient(120deg,var(--wine-deep),var(--wine) 55%,var(--mauve));color:#f5e7da}
+.cta-band::before{content:"";position:absolute;inset:0;opacity:.12;
+  background:radial-gradient(circle at 20% 30%,#fff,transparent 25%),radial-gradient(circle at 80% 70%,var(--gold),transparent 30%)}
+.cta-band .wrap{position:relative;text-align:center;display:flex;flex-direction:column;align-items:center}
+.cta-band .script{color:var(--gold-soft);font-size:2.6rem}
+.cta-band h2{color:#fff;font-size:clamp(2.2rem,5vw,3.6rem);margin:6px 0 12px}
+.cta-band p{color:#eed9c9;max-width:46ch;margin-bottom:32px}
+.cta-band .hero-actions{justify-content:center}
+
+/* ============== CONTACT ============== */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:stretch}
+.info-list{display:grid;gap:14px;margin:30px 0}
+.info{display:flex;gap:16px;align-items:flex-start}
+.info .ii{width:46px;height:46px;border-radius:12px;flex:none;display:grid;place-items:center;color:var(--wine);
+  background:var(--ivory)}
+.info .ii svg{width:22px;height:22px}
+.info b{display:block;font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--mauve);margin-bottom:2px}
+.info span{font-size:1rem;color:var(--espresso);font-weight:500}
+.map{border-radius:var(--radius);overflow:hidden;min-height:340px;position:relative;border:1px solid var(--line);
+  background:linear-gradient(160deg,var(--ivory),var(--sand));box-shadow:var(--shadow-sm)}
+.map iframe{position:absolute;inset:0;width:100%;height:100%;border:0;filter:saturate(.92) contrast(1.02)}
+@media(max-width:860px){.contact-grid{grid-template-columns:1fr;gap:36px}}
+
+/* ============== FOOTER ============== */
+footer{background:var(--espresso);color:#e8d9cb;padding:64px 0 28px}
+.foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px;padding-bottom:40px;border-bottom:1px solid rgba(255,255,255,.1)}
+footer .logo-txt b{color:#fff}
+footer p.fdesc{font-size:.9rem;color:#bda897;margin-top:18px;max-width:34ch}
+footer h4{font-family:var(--serif);font-size:1.2rem;color:#fff;margin-bottom:16px}
+footer li{margin-bottom:10px}
+footer a.fl{font-size:.9rem;color:#bda897;transition:.3s}
+footer a.fl:hover{color:var(--gold-soft);padding-left:4px}
+.foot-bot{display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;padding-top:24px;font-size:.78rem;color:#9c8978}
+.foot-bot a{color:var(--gold-soft)}
+.socials{display:flex;gap:12px}
+.socials a{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;background:rgba(255,255,255,.08);transition:.3s}
+.socials a:hover{background:var(--wine);transform:translateY(-3px)}
+.socials svg{width:18px;height:18px}
+@media(max-width:760px){.foot-grid{grid-template-columns:1fr;gap:32px}}
+
+/* ============== FLOATING WA ============== */
+.wa-float{position:fixed;right:22px;bottom:22px;z-index:300;width:62px;height:62px;border-radius:50%;
+  background:var(--wa);display:grid;place-items:center;box-shadow:0 14px 34px -10px rgba(18,140,90,.8);
+  animation:pulse 2.4s infinite;transition:transform .3s}
+.wa-float:hover{transform:scale(1.08)}
+.wa-float svg{width:32px;height:32px;color:#fff}
+@keyframes pulse{0%{box-shadow:0 14px 34px -10px rgba(18,140,90,.8),0 0 0 0 rgba(37,211,102,.5)}
+  70%{box-shadow:0 14px 34px -10px rgba(18,140,90,.8),0 0 0 18px rgba(37,211,102,0)}
+  100%{box-shadow:0 14px 34px -10px rgba(18,140,90,.8),0 0 0 0 rgba(37,211,102,0)}}
+
+/* real photos in frames */
+.frame-img{width:100%;height:100%;object-fit:cover;display:block}
+
+/* real logo */
+.logo-img{height:46px;width:auto;display:block;border-radius:9px;box-shadow:0 6px 18px -8px rgba(110,43,56,.5)}
+header.scrolled .logo-img{height:42px;transition:height .4s var(--ease)}
+.foot-logo{height:54px;width:auto;border-radius:10px}
+@media(max-width:600px){.logo-img{height:40px}}
+
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="wrap">
+    <span class="tb-rating">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 17.27 6.18 3.73-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+      <span class="tb-stars">★★★★★</span> 4,8 · 98 avaliações no Google
+    </span>
+    <a class="tb-hide" href="tel:+554833443578">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.6.1.4 0 .8-.3 1.1l-2.2 2.2z"/></svg>
+      (48) 3344-3578
+    </a>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header id="top">
+  <div class="wrap">
+    <a class="logo" href="#top" aria-label="COP - Centro Odontológico Palhoça">
+      <img class="logo-img" src="assets/logo-cop.png" alt="COP - Centro Odontológico Palhoça" />
+    </a>
+    <nav class="main">
+      <a class="nl" href="#servicos">Especialidades</a>
+      <a class="nl" href="#diferenciais">Diferenciais</a>
+      <a class="nl" href="#equipe">A Equipe</a>
+      <a class="nl" href="#resultados">Resultados</a>
+      <a class="nl" href="#avaliacoes">Avaliações</a>
+      <a class="nl" href="#contato">Contato</a>
+    </nav>
+    <div class="header-cta">
+      <a class="btn btn-wa" href="https://wa.me/5548996357971?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o." target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M.06 24l1.7-6.2A11.9 11.9 0 1 1 12 24a11.9 11.9 0 0 1-5.7-1.46L.06 24zM6.6 20.1l.37.22a9.9 9.9 0 0 0 5.04 1.38 9.9 9.9 0 1 0-8.4-4.66l.24.38-1 3.65 3.75-.97zM18.1 14.5c-.07-.12-.26-.19-.55-.33-.29-.15-1.7-.84-1.96-.94-.26-.1-.46-.14-.65.14-.19.29-.74.94-.91 1.13-.17.19-.34.21-.62.07-.29-.14-1.21-.45-2.3-1.42-.85-.76-1.43-1.7-1.6-1.98-.16-.29-.02-.44.13-.58.13-.13.29-.34.43-.5.14-.17.19-.29.29-.48.1-.19.05-.36-.02-.5-.07-.14-.65-1.57-.89-2.15-.24-.56-.47-.48-.65-.49l-.55-.01c-.19 0-.5.07-.76.36-.26.29-1 .98-1 2.38 0 1.41 1.02 2.77 1.17 2.96.14.19 2.01 3.06 4.87 4.29.68.29 1.21.47 1.62.6.68.22 1.3.18 1.79.11.55-.08 1.7-.69 1.94-1.36.24-.67.24-1.24.17-1.36z"/></svg>
+        <span class="lbl">Agendar no WhatsApp</span>
+      </a>
+      <button class="burger" id="burger" aria-label="Abrir menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<!-- MOBILE DRAWER -->
+<div class="drawer" id="drawer">
+  <button class="drawer-close" id="drawerClose" aria-label="Fechar menu">&times;</button>
+  <a href="#servicos">Especialidades</a>
+  <a href="#diferenciais">Diferenciais</a>
+  <a href="#equipe">A Equipe</a>
+  <a href="#resultados">Resultados</a>
+  <a href="#avaliacoes">Avaliações</a>
+  <a href="#contato">Contato</a>
+  <a class="btn btn-wa" href="https://wa.me/5548996357971?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o." target="_blank" rel="noopener">Agendar no WhatsApp</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <span class="eyebrow reveal">Há mais de 10 anos em Palhoça · SC</span>
+      <h1 class="reveal d1">O seu melhor<br><span class="script">sorriso</span><br>começa aqui.</h1>
+      <p class="lead reveal d2">Especialistas em <strong>Reabilitação Oral</strong>, implantes, próteses e estética. Um cuidado completo, acolhedor e para toda a família.</p>
+      <div class="hero-actions reveal d3">
+        <a class="btn btn-wa" href="https://wa.me/5548996357971?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o." target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M.06 24l1.7-6.2A11.9 11.9 0 1 1 12 24a11.9 11.9 0 0 1-5.7-1.46L.06 24zM6.6 20.1l.37.22a9.9 9.9 0 0 0 5.04 1.38 9.9 9.9 0 1 0-8.4-4.66l.24.38-1 3.65 3.75-.97zM18.1 14.5c-.07-.12-.26-.19-.55-.33-.29-.15-1.7-.84-1.96-.94-.26-.1-.46-.14-.65.14-.19.29-.74.94-.91 1.13-.17.19-.34.21-.62.07-.29-.14-1.21-.45-2.3-1.42-.85-.76-1.43-1.7-1.6-1.98-.16-.29-.02-.44.13-.58.13-.13.29-.34.43-.5.14-.17.19-.29.29-.48.1-.19.05-.36-.02-.5-.07-.14-.65-1.57-.89-2.15-.24-.56-.47-.48-.65-.49l-.55-.01c-.19 0-.5.07-.76.36-.26.29-1 .98-1 2.38 0 1.41 1.02 2.77 1.17 2.96.14.19 2.01 3.06 4.87 4.29.68.29 1.21.47 1.62.6.68.22 1.3.18 1.79.11.55-.08 1.7-.69 1.94-1.36.24-.67.24-1.24.17-1.36z"/></svg>
+          Agendar avaliação
+        </a>
+        <a class="btn btn-outline" href="#servicos">Ver especialidades</a>
+      </div>
+      <div class="hero-trust reveal d4">
+        <div class="gbadge">
+          <svg class="g" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.5 12.2c0-.8-.1-1.5-.2-2.2H12v4.2h5.9c-.3 1.4-1 2.5-2.2 3.3v2.8h3.6c2.1-1.9 3.2-4.8 3.2-8.1z"/><path fill="#34A853" d="M12 23c2.9 0 5.4-1 7.2-2.7l-3.6-2.8c-1 .7-2.3 1.1-3.6 1.1-2.8 0-5.1-1.9-6-4.4H2.3v2.9C4.1 20.8 7.8 23 12 23z"/><path fill="#FBBC05" d="M6 14.2c-.2-.7-.4-1.4-.4-2.2s.1-1.5.4-2.2V6.9H2.3C1.5 8.4 1 10.1 1 12s.5 3.6 1.3 5.1L6 14.2z"/><path fill="#EA4335" d="M12 5.4c1.6 0 3 .5 4.1 1.6l3.1-3.1C17.4 2.1 14.9 1 12 1 7.8 1 4.1 3.2 2.3 6.9L6 9.8c.9-2.5 3.2-4.4 6-4.4z"/></svg>
+          <div><b>4,8</b><span class="gs">★★★★★</span><small>98 avaliações no Google</small></div>
+        </div>
+        <div>
+          <div style="font-family:var(--serif);font-size:1.7rem;color:var(--wine);line-height:1">+10 anos</div>
+          <small style="font-size:.74rem;color:var(--espresso-soft)">cuidando de Palhoça</small>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-visual reveal d2">
+      <svg class="hero-leaf" style="top:-30px;left:-40px;width:120px" viewBox="0 0 100 100" fill="currentColor"><path d="M50 95C50 60 20 40 10 10c40 5 55 40 40 85z M50 95C50 60 80 40 90 10c-40 5-55 40-40 85z"/></svg>
+      <div class="hero-photo">
+        <img class="frame-img" style="object-position:50% 25%" src="assets/dra-vanessa-b.jpg" alt="Dra. Vanessa Thiemi, responsável técnica do Centro Odontológico Palhoça" />
+      </div>
+      <div class="float-card fc-1">
+        <span class="ic" style="background:linear-gradient(140deg,var(--sage),#5f6b50)">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M12 2a7 7 0 0 0-7 7c0 3 2 5 2 8h10c0-3 2-5 2-8a7 7 0 0 0-7-7zM9 20h6v1a2 2 0 0 1-2 2h-2a2 2 0 0 1-2-2v-1z"/></svg>
+        </span>
+        <div><b>Espaço Kids</b><small>conforto para a família</small></div>
+      </div>
+      <div class="float-card fc-2">
+        <span class="ic" style="background:linear-gradient(140deg,var(--caramel),var(--wine))">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="m12 17.27 6.18 3.73-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+        </span>
+        <div><b>4,8 ★</b><small>nota no Google</small></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span>Reabilitação Oral<span></span></span><span>Implantes Dentários</span><span>Próteses & Protocolo</span><span>Ortodontia</span><span>Facetas & Lentes</span><span>Harmonização Facial</span><span>Clareamento</span>
+    <span>Reabilitação Oral</span><span>Implantes Dentários</span><span>Próteses & Protocolo</span><span>Ortodontia</span><span>Facetas & Lentes</span><span>Harmonização Facial</span><span>Clareamento</span>
+  </div>
+</div>
+
+<!-- STATS -->
+<section class="section stats">
+  <div class="wrap stats-grid">
+    <div class="stat reveal"><b><span class="plus">+</span>10</b><span>anos de experiência</span></div>
+    <div class="stat reveal d1"><b>4,8</b><span>nota no Google · 98 avaliações</span></div>
+    <div class="stat reveal d2"><b><span class="plus">+</span>12</b><span>especialidades</span></div>
+    <div class="stat reveal d3"><b>100%</b><span>família bem-vinda</span></div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="section" id="servicos">
+  <div class="wrap">
+    <div class="shead reveal">
+      <span class="eyebrow" style="justify-content:center">Tratamentos</span>
+      <h2>Tudo para o seu sorriso <span class="script">em um só lugar</span></h2>
+      <p>Da clínica geral à alta complexidade em reabilitação oral, com tecnologia e um time especializado.</p>
+    </div>
+    <div class="serv-grid">
+      <article class="serv reveal">
+        <span class="tag">Carro-chefe</span>
+        <span class="si"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8 2 6 4 4 5c-1 .5-1 2-1 4 0 5 2 13 4 13 1.5 0 1.5-3 2.5-5S11 14 12 14s1.5 1 2.5 3 1 5 2.5 5c2 0 4-8 4-13 0-2 0-3.5-1-4-2-1-4-3-8-3z"/></svg></span>
+        <h3>Reabilitação Oral</h3>
+        <p>Devolvemos função e estética ao seu sorriso com um plano completo e personalizado.</p>
+      </article>
+      <article class="serv reveal d1">
+        <span class="si"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3v8m0 0c-2 0-4 1.5-4 5 0 3 1 5 2 5s1-2 2-4 1 1 2 4 1-2 2-5c0-3.5-2-5-4-5z" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="6" r="2.5"/></svg></span>
+        <h3>Implantes Dentários</h3>
+        <p>Reposição de dentes com naturalidade, segurança e durabilidade.</p>
+      </article>
+      <article class="serv reveal d2">
+        <span class="si"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 8h16v3H4zm0 5h16v3H4zm2-9h12v2H6zM6 18h12v2H6z"/></svg></span>
+        <h3>Próteses & Protocolo</h3>
+        <p>Protocolos fixos e próteses sob medida para você voltar a sorrir sem receio.</p>
+      </article>
+      <article class="serv reveal">
+        <span class="si"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="9" width="18" height="6" rx="2"/><path d="M7 9v6M12 9v6M17 9v6" stroke-linecap="round"/></svg></span>
+        <h3>Ortodontia</h3>
+        <p>Aparelho fixo ou invisível para alinhar seu sorriso em qualquer idade.</p>
+      </article>
+      <article class="serv reveal d1">
+        <span class="si"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M5 4h14a1 1 0 0 1 1 1v5a8 8 0 0 1-16 0V5a1 1 0 0 1 1-1zm2 2v4a6 6 0 0 0 10 0V6H7z"/></svg></span>
+        <h3>Facetas & Lentes</h3>
+        <p>Lentes de contato dental para um sorriso harmônico e luminoso.</p>
+      </article>
+      <article class="serv reveal d2">
+        <span class="si"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 5.2L20 8l-4 4 1 6-5-2.8L7 18l1-6-4-4 5.6-.8z"/></svg></span>
+        <h3>Clareamento</h3>
+        <p>Dentes mais brancos com técnicas seguras e resultado real.</p>
+      </article>
+      <article class="serv reveal">
+        <span class="si"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-7-4.5-7-10a7 7 0 0 1 14 0c0 5.5-7 10-7 10z" stroke-linejoin="round"/><circle cx="12" cy="11" r="2.5"/></svg></span>
+        <h3>Harmonização Facial</h3>
+        <p>Realce sua beleza natural com procedimentos estéticos faciais.</p>
+      </article>
+      <article class="serv reveal d1">
+        <span class="si"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 2h2v6H7zm8 0h2v6h-2zM6 9h12a2 2 0 0 1 2 2c0 6-3 11-8 11s-8-5-8-11a2 2 0 0 1 2-2z"/></svg></span>
+        <h3>Odontopediatria</h3>
+        <p>Atendimento gentil para os pequenos, com nosso Espaço Kids.</p>
+      </article>
+      <article class="serv reveal d2">
+        <span class="si"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13 2L3 14h7l-1 8 10-12h-7z"/></svg></span>
+        <h3>Laserterapia</h3>
+        <p>Mais conforto, menos dor e recuperação mais rápida nos tratamentos.</p>
+      </article>
+    </div>
+    <div style="text-align:center;margin-top:46px" class="reveal">
+      <a class="btn btn-ghost" href="https://wa.me/5548996357971?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20sobre%20os%20tratamentos%20da%20COP." target="_blank" rel="noopener">Não achou seu tratamento? Fale com a gente</a>
+    </div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section class="section why" id="diferenciais">
+  <div class="wrap why-grid">
+    <div class="why-visual reveal">
+      <div class="why-photo">
+        <img class="frame-img" src="assets/espaco-02.webp" alt="Recepção da COP com parede de plantas e letreiro Sorria todo dia" />
+      </div>
+      <div class="why-photo small">
+        <img class="frame-img" src="assets/ambiente-01.webp" alt="Espaço Kids da COP" />
+      </div>
+    </div>
+    <div class="why-copy">
+      <span class="eyebrow reveal">Por que a COP</span>
+      <h2 class="reveal d1" style="font-size:clamp(2.1rem,4.4vw,3.2rem);margin:16px 0 10px">Um cuidado que vai<br>além do consultório.</h2>
+      <p class="reveal d2" style="color:var(--espresso-soft);margin-bottom:14px;max-width:46ch">Cada detalhe foi pensado para você se sentir em casa — do acolhimento na recepção à precisão do tratamento.</p>
+      <div class="why-list">
+        <div class="diff reveal d1">
+          <span class="di"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a7 7 0 0 0-7 7c0 3 2 5 2 8h10c0-3 2-5 2-8a7 7 0 0 0-7-7zM9 20h6v1a2 2 0 0 1-2 2h-2a2 2 0 0 1-2-2v-1z"/></svg></span>
+          <div><h3>Espaço Kids</h3><p>Um cantinho preparado para as crianças, para toda a família se sentir bem.</p></div>
+        </div>
+        <div class="diff reveal d2">
+          <span class="di"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 13h2l1-3 3 9 3-14 3 11 2-5 1 2h3v2h-4l-1-2-2 6-3-11-2 9-2-6H3z"/></svg></span>
+          <div><h3>Ambiente acolhedor e climatizado</h3><p>Limpo, organizado e confortável — como nossos pacientes descrevem no Google.</p></div>
+        </div>
+        <div class="diff reveal d3">
+          <span class="di"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13 2L3 14h7l-1 8 10-12h-7z"/></svg></span>
+          <div><h3>Tecnologia & Laserterapia</h3><p>Tratamentos modernos com mais conforto, menos dor e recuperação acelerada.</p></div>
+        </div>
+        <div class="diff reveal d4">
+          <span class="di"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <div><h3>Agendamento sem complicação</h3><p>Marque sua avaliação em poucos cliques, direto pelo WhatsApp.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DOCTOR -->
+<section class="section doc" id="equipe">
+  <div class="wrap doc-grid">
+    <div class="doc-photo reveal">
+      <img class="frame-img" style="object-position:50% 30%" src="assets/dra-vanessa-a.jpg" alt="Dra. Vanessa Thiemi segurando uma prótese dentária" />
+    </div>
+    <div class="doc-copy reveal d1">
+      <span class="eyebrow">Responsável Técnica</span>
+      <h2>Dra. Vanessa Thiemi</h2>
+      <span class="crm">EPAO 1709 · Especialista em Reabilitação Oral</span>
+      <p class="bio">À frente da COP, a Dra. Vanessa lidera uma equipe apaixonada por devolver sorrisos. Mais de uma década transformando a saúde bucal de Palhoça com técnica, sensibilidade e um atendimento que os pacientes descrevem como <em>“nota mil”</em>.</p>
+      <div class="doc-mini">
+        <div><b>+10</b><span>anos de experiência</span></div>
+        <div><b>4,8</b><span>nota no Google</span></div>
+        <div><b>540+</b><span>conteúdos no Instagram</span></div>
+      </div>
+      <a class="btn btn-wa" href="https://wa.me/5548996357971?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o%20com%20a%20equipe%20da%20COP." target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M.06 24l1.7-6.2A11.9 11.9 0 1 1 12 24a11.9 11.9 0 0 1-5.7-1.46L.06 24zM6.6 20.1l.37.22a9.9 9.9 0 0 0 5.04 1.38 9.9 9.9 0 1 0-8.4-4.66l.24.38-1 3.65 3.75-.97z"/></svg>
+        Conversar com a equipe
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section class="section team" id="nossa-equipe">
+  <div class="wrap">
+    <div class="shead reveal">
+      <span class="eyebrow" style="justify-content:center">Quem cuida de você</span>
+      <h2>Uma equipe que faz você <span class="script">sorrir</span></h2>
+      <p>Profissionais especializadas e apaixonadas pelo que fazem — prontas para acolher você e toda a sua família.</p>
+    </div>
+    <div class="team-photo reveal d1">
+      <img class="frame-img" src="assets/equipe-01.webp" alt="Equipe do Centro Odontológico Palhoça" />
+    </div>
+    <div class="team-vals reveal d2">
+      <div class="tv"><b><span class="plus">+</span>6</b><span>especialistas dedicadas</span></div>
+      <div class="tv"><b><span class="plus">+</span>10</b><span>anos de história</span></div>
+      <div class="tv"><b>100%</b><span>atendimento humanizado</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- BEFORE / AFTER -->
+<section class="section ba-wrap" id="resultados">
+  <div class="wrap">
+    <div class="shead reveal">
+      <span class="eyebrow" style="justify-content:center">Resultados reais</span>
+      <h2>O antes &amp; depois <span class="script">de quem confiou</span></h2>
+      <p>Arraste a barra e veja a transformação. Casos reais de pacientes da COP.</p>
+    </div>
+    <div class="ba-grid">
+      <div class="ba-card reveal">
+        <div class="ba" style="aspect-ratio:313/417">
+          <img class="ba-after" src="assets/depois-02.jpg" alt="Sorriso depois do tratamento na COP" />
+          <div class="ba-before-wrap"><img src="assets/antes-02.jpg" alt="Sorriso antes do tratamento na COP" /></div>
+          <span class="ba-tag ba-tag-before">Antes</span>
+          <span class="ba-tag ba-tag-after">Depois</span>
+          <div class="ba-divider"><div class="ba-handle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 7l-5 5 5 5M15 7l5 5-5 5" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
+          <input class="ba-range" type="range" min="0" max="100" value="50" aria-label="Comparar antes e depois — caso 1" />
+        </div>
+        <div class="ba-cap"><b>Sorriso renovado</b><span>Clareamento e estética dental</span></div>
+      </div>
+      <div class="ba-card reveal d1">
+        <div class="ba" style="aspect-ratio:899/683">
+          <img class="ba-after" src="assets/depois-03.jpg" alt="Sorriso depois do tratamento na COP" />
+          <div class="ba-before-wrap"><img src="assets/antes-03.jpg" alt="Sorriso antes do tratamento na COP" /></div>
+          <span class="ba-tag ba-tag-before">Antes</span>
+          <span class="ba-tag ba-tag-after">Depois</span>
+          <div class="ba-divider"><div class="ba-handle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 7l-5 5 5 5M15 7l5 5-5 5" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
+          <input class="ba-range" type="range" min="0" max="100" value="50" aria-label="Comparar antes e depois — caso 2" />
+        </div>
+        <div class="ba-cap"><b>Harmonização do sorriso</b><span>Alinhamento e clareamento</span></div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:46px" class="reveal">
+      <a class="btn btn-wa" href="https://wa.me/5548996357971?text=Ol%C3%A1!%20Vi%20os%20resultados%20no%20site%20e%20quero%20transformar%20meu%20sorriso." target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M.06 24l1.7-6.2A11.9 11.9 0 1 1 12 24a11.9 11.9 0 0 1-5.7-1.46L.06 24zM6.6 20.1l.37.22a9.9 9.9 0 0 0 5.04 1.38 9.9 9.9 0 1 0-8.4-4.66l.24.38-1 3.65 3.75-.97z"/></svg>
+        Quero um sorriso assim
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="section" id="avaliacoes">
+  <div class="wrap">
+    <div class="shead reveal">
+      <span class="eyebrow" style="justify-content:center">O que dizem os pacientes</span>
+      <h2>Nota <span class="script">4,8</span> de quem confiou</h2>
+      <p>Avaliações reais de quem já passou pela COP — e voltou a sorrir.</p>
+    </div>
+    <div class="tst-grid">
+      <article class="tst reveal">
+        <div class="quote">“</div>
+        <div class="stars">★★★★★</div>
+        <p>Super recomendo, Dra. Vanessa e sua equipe são nota mil!</p>
+        <div class="who"><span class="av">J</span><div><b>Janaina Petry</b><small><svg viewBox="0 0 24 24" width="13" height="13"><path fill="#4285F4" d="M22.5 12.2c0-.8-.1-1.5-.2-2.2H12v4.2h5.9c-.3 1.4-1 2.5-2.2 3.3v2.8h3.6c2.1-1.9 3.2-4.8 3.2-8.1z"/><path fill="#34A853" d="M12 23c2.9 0 5.4-1 7.2-2.7l-3.6-2.8c-1 .7-2.3 1.1-3.6 1.1-2.8 0-5.1-1.9-6-4.4H2.3v2.9C4.1 20.8 7.8 23 12 23z"/><path fill="#FBBC05" d="M6 14.2c-.2-.7-.4-1.4-.4-2.2s.1-1.5.4-2.2V6.9H2.3C1.5 8.4 1 10.1 1 12s.5 3.6 1.3 5.1L6 14.2z"/><path fill="#EA4335" d="M12 5.4c1.6 0 3 .5 4.1 1.6l3.1-3.1C17.4 2.1 14.9 1 12 1 7.8 1 4.1 3.2 2.3 6.9L6 9.8c.9-2.5 3.2-4.4 6-4.4z"/></svg>via Google</small></div></div>
+      </article>
+      <article class="tst reveal d1">
+        <div class="quote">“</div>
+        <div class="stars">★★★★★</div>
+        <p>Ambiente limpo, organizado, climatizado e com espaço kids.</p>
+        <div class="who"><span class="av">A</span><div><b>Amanda Diel Rodrigues</b><small><svg viewBox="0 0 24 24" width="13" height="13"><path fill="#4285F4" d="M22.5 12.2c0-.8-.1-1.5-.2-2.2H12v4.2h5.9c-.3 1.4-1 2.5-2.2 3.3v2.8h3.6c2.1-1.9 3.2-4.8 3.2-8.1z"/><path fill="#34A853" d="M12 23c2.9 0 5.4-1 7.2-2.7l-3.6-2.8c-1 .7-2.3 1.1-3.6 1.1-2.8 0-5.1-1.9-6-4.4H2.3v2.9C4.1 20.8 7.8 23 12 23z"/><path fill="#FBBC05" d="M6 14.2c-.2-.7-.4-1.4-.4-2.2s.1-1.5.4-2.2V6.9H2.3C1.5 8.4 1 10.1 1 12s.5 3.6 1.3 5.1L6 14.2z"/><path fill="#EA4335" d="M12 5.4c1.6 0 3 .5 4.1 1.6l3.1-3.1C17.4 2.1 14.9 1 12 1 7.8 1 4.1 3.2 2.3 6.9L6 9.8c.9-2.5 3.2-4.4 6-4.4z"/></svg>via Google</small></div></div>
+      </article>
+      <article class="tst reveal d2">
+        <div class="quote">“</div>
+        <div class="stars">★★★★★</div>
+        <p>Clínica muito boa, agendamento sem complicação, recomendo muito.</p>
+        <div class="who"><span class="av">A</span><div><b>Alexandre Zambrozuski</b><small><svg viewBox="0 0 24 24" width="13" height="13"><path fill="#4285F4" d="M22.5 12.2c0-.8-.1-1.5-.2-2.2H12v4.2h5.9c-.3 1.4-1 2.5-2.2 3.3v2.8h3.6c2.1-1.9 3.2-4.8 3.2-8.1z"/><path fill="#34A853" d="M12 23c2.9 0 5.4-1 7.2-2.7l-3.6-2.8c-1 .7-2.3 1.1-3.6 1.1-2.8 0-5.1-1.9-6-4.4H2.3v2.9C4.1 20.8 7.8 23 12 23z"/><path fill="#FBBC05" d="M6 14.2c-.2-.7-.4-1.4-.4-2.2s.1-1.5.4-2.2V6.9H2.3C1.5 8.4 1 10.1 1 12s.5 3.6 1.3 5.1L6 14.2z"/><path fill="#EA4335" d="M12 5.4c1.6 0 3 .5 4.1 1.6l3.1-3.1C17.4 2.1 14.9 1 12 1 7.8 1 4.1 3.2 2.3 6.9L6 9.8c.9-2.5 3.2-4.4 6-4.4z"/></svg>via Google</small></div></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section class="section cta-band">
+  <div class="wrap">
+    <span class="script reveal">vamos começar?</span>
+    <h2 class="reveal d1">Seu novo sorriso está<br>a uma mensagem de distância.</h2>
+    <p class="reveal d2">Agende sua avaliação pelo WhatsApp e descubra o tratamento ideal para você. Atendimento rápido e sem compromisso.</p>
+    <div class="hero-actions reveal d3">
+      <a class="btn btn-wa" href="https://wa.me/5548996357971?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o." target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M.06 24l1.7-6.2A11.9 11.9 0 1 1 12 24a11.9 11.9 0 0 1-5.7-1.46L.06 24zM6.6 20.1l.37.22a9.9 9.9 0 0 0 5.04 1.38 9.9 9.9 0 1 0-8.4-4.66l.24.38-1 3.65 3.75-.97zM18.1 14.5c-.07-.12-.26-.19-.55-.33-.29-.15-1.7-.84-1.96-.94-.26-.1-.46-.14-.65.14-.19.29-.74.94-.91 1.13-.17.19-.34.21-.62.07-.29-.14-1.21-.45-2.3-1.42-.85-.76-1.43-1.7-1.6-1.98-.16-.29-.02-.44.13-.58.13-.13.29-.34.43-.5.14-.17.19-.29.29-.48.1-.19.05-.36-.02-.5-.07-.14-.65-1.57-.89-2.15-.24-.56-.47-.48-.65-.49l-.55-.01c-.19 0-.5.07-.76.36-.26.29-1 .98-1 2.38 0 1.41 1.02 2.77 1.17 2.96.14.19 2.01 3.06 4.87 4.29.68.29 1.21.47 1.62.6.68.22 1.3.18 1.79.11.55-.08 1.7-.69 1.94-1.36.24-.67.24-1.24.17-1.36z"/></svg>
+        Agendar pelo WhatsApp
+      </a>
+      <a class="btn btn-outline" style="color:#fff;border-color:rgba(255,255,255,.5)" href="tel:+554833443578">Ligar: (48) 3344-3578</a>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="section" id="contato">
+  <div class="wrap contact-grid">
+    <div class="reveal">
+      <span class="eyebrow">Onde nos encontrar</span>
+      <h2 style="font-size:clamp(2rem,4vw,2.9rem);margin:16px 0 6px">Venha nos visitar</h2>
+      <p style="color:var(--espresso-soft);max-width:42ch">Estamos na Ponte do Imaruim, em Palhoça. Será um prazer receber você e sua família.</p>
+      <div class="info-list">
+        <div class="info">
+          <span class="ii"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-7-4.5-7-10a7 7 0 0 1 14 0c0 5.5-7 10-7 10z" stroke-linejoin="round"/><circle cx="12" cy="11" r="2.5"/></svg></span>
+          <div><b>Endereço</b><span>R. Antônio Vieira, 664 — Ponte do Imaruim, Palhoça/SC, 88130-470</span></div>
+        </div>
+        <div class="info">
+          <span class="ii"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M.06 24l1.7-6.2A11.9 11.9 0 1 1 12 24a11.9 11.9 0 0 1-5.7-1.46L.06 24zM6.6 20.1l.37.22a9.9 9.9 0 0 0 5.04 1.38 9.9 9.9 0 1 0-8.4-4.66l.24.38-1 3.65 3.75-.97z"/></svg></span>
+          <div><b>WhatsApp</b><span>(48) 99635-7971</span></div>
+        </div>
+        <div class="info">
+          <span class="ii"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.6.1.4 0 .8-.3 1.1l-2.2 2.2z"/></svg></span>
+          <div><b>Telefone</b><span>(48) 3344-3578</span></div>
+        </div>
+        <div class="info">
+          <span class="ii"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <div><b>Horário</b><span>Segunda a sábado · sob agendamento</span></div>
+        </div>
+      </div>
+      <a class="btn btn-wa" href="https://wa.me/5548996357971?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o." target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M.06 24l1.7-6.2A11.9 11.9 0 1 1 12 24a11.9 11.9 0 0 1-5.7-1.46L.06 24zM6.6 20.1l.37.22a9.9 9.9 0 0 0 5.04 1.38 9.9 9.9 0 1 0-8.4-4.66l.24.38-1 3.65 3.75-.97z"/></svg>
+        Agendar minha avaliação
+      </a>
+    </div>
+    <div class="map reveal d1">
+      <iframe
+        title="Localização da COP - Centro Odontológico Palhoça no Google Maps"
+        src="https://maps.google.com/maps?q=COP%20-%20Centro%20Odontol%C3%B3gico%20Palho%C3%A7a%2C%20R.%20Ant%C3%B4nio%20Vieira%2C%20664%2C%20Ponte%20do%20Imaruim%2C%20Palho%C3%A7a%20-%20SC%2C%2088130-470&z=16&output=embed"
+        loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="logo">
+          <img class="foot-logo" src="assets/logo-cop.png" alt="COP - Centro Odontológico Palhoça" />
+        </div>
+        <p class="fdesc">Especialistas em Reabilitação Oral, da clínica geral à implantodontia. Há mais de 10 anos cuidando do sorriso de Palhoça e região.</p>
+      </div>
+      <div>
+        <h4>Especialidades</h4>
+        <ul>
+          <li><a class="fl" href="#servicos">Implantes & Próteses</a></li>
+          <li><a class="fl" href="#servicos">Ortodontia</a></li>
+          <li><a class="fl" href="#servicos">Facetas & Lentes</a></li>
+          <li><a class="fl" href="#servicos">Harmonização Facial</a></li>
+          <li><a class="fl" href="#servicos">Odontopediatria</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contato</h4>
+        <ul>
+          <li><a class="fl" href="https://wa.me/5548996357971" target="_blank" rel="noopener">WhatsApp (48) 99635-7971</a></li>
+          <li><a class="fl" href="tel:+554833443578">Telefone (48) 3344-3578</a></li>
+          <li><a class="fl" href="#contato">R. Antônio Vieira, 664 — Palhoça/SC</a></li>
+          <li><a class="fl" href="https://instagram.com/cop.odontopalhoca" target="_blank" rel="noopener">@cop.odontopalhoca</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bot">
+      <span>© 2025 COP · Centro Odontológico Palhoça · Resp. Téc. Dra. Vanessa Thiemi · EPAO 1709</span>
+      <div class="socials">
+        <a href="https://instagram.com/cop.odontopalhoca" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.2c3.2 0 3.6 0 4.9.07 1.2.06 1.8.26 2.2.43.6.2 1 .47 1.4.9.4.4.7.8.9 1.4.2.4.4 1 .4 2.2.1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9c0 1.2-.2 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.2-1 .4-2.2.4-1.3.1-1.7.1-4.9.1s-3.6 0-4.9-.1c-1.2 0-1.8-.2-2.2-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.2-.4-.4-1-.4-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.9c0-1.2.2-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.2 1-.4 2.2-.4C8.4 2.2 8.8 2.2 12 2.2zm0 1.8c-3.1 0-3.5 0-4.7.07-1.1.05-1.7.24-2.1.4-.5.2-.9.44-1.3.84-.4.4-.64.8-.84 1.3-.16.4-.35 1-.4 2.1C2.6 9.7 2.6 10.1 2.6 12s0 2.3.06 3.5c.05 1.1.24 1.7.4 2.1.2.5.44.9.84 1.3.4.4.8.64 1.3.84.4.16 1 .35 2.1.4 1.2.06 1.6.07 4.7.07s3.5 0 4.7-.07c1.1-.05 1.7-.24 2.1-.4.5-.2.9-.44 1.3-.84.4-.4.64-.8.84-1.3.16-.4.35-1 .4-2.1.06-1.2.07-1.6.07-3.5s0-2.3-.07-3.5c-.05-1.1-.24-1.7-.4-2.1-.2-.5-.44-.9-.84-1.3-.4-.4-.8-.64-1.3-.84-.4-.16-1-.35-2.1-.4C15.5 4 15.1 4 12 4zm0 3.1a4.9 4.9 0 1 1 0 9.8 4.9 4.9 0 0 1 0-9.8zm0 8.1a3.2 3.2 0 1 0 0-6.4 3.2 3.2 0 0 0 0 6.4zm6.2-8.3a1.15 1.15 0 1 1-2.3 0 1.15 1.15 0 0 1 2.3 0z"/></svg>
+        </a>
+        <a href="https://wa.me/5548996357971" target="_blank" rel="noopener" aria-label="WhatsApp">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M.06 24l1.7-6.2A11.9 11.9 0 1 1 12 24a11.9 11.9 0 0 1-5.7-1.46L.06 24zM6.6 20.1l.37.22a9.9 9.9 0 0 0 5.04 1.38 9.9 9.9 0 1 0-8.4-4.66l.24.38-1 3.65 3.75-.97z"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- FLOATING WHATSAPP -->
+<a class="wa-float" href="https://wa.me/5548996357971?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o." target="_blank" rel="noopener" aria-label="Falar no WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M.06 24l1.7-6.2A11.9 11.9 0 1 1 12 24a11.9 11.9 0 0 1-5.7-1.46L.06 24zM6.6 20.1l.37.22a9.9 9.9 0 0 0 5.04 1.38 9.9 9.9 0 1 0-8.4-4.66l.24.38-1 3.65 3.75-.97zM18.1 14.5c-.07-.12-.26-.19-.55-.33-.29-.15-1.7-.84-1.96-.94-.26-.1-.46-.14-.65.14-.19.29-.74.94-.91 1.13-.17.19-.34.21-.62.07-.29-.14-1.21-.45-2.3-1.42-.85-.76-1.43-1.7-1.6-1.98-.16-.29-.02-.44.13-.58.13-.13.29-.34.43-.5.14-.17.19-.29.29-.48.1-.19.05-.36-.02-.5-.07-.14-.65-1.57-.89-2.15-.24-.56-.47-.48-.65-.49l-.55-.01c-.19 0-.5.07-.76.36-.26.29-1 .98-1 2.38 0 1.41 1.02 2.77 1.17 2.96.14.19 2.01 3.06 4.87 4.29.68.29 1.21.47 1.62.6.68.22 1.3.18 1.79.11.55-.08 1.7-.69 1.94-1.36.24-.67.24-1.24.17-1.36z"/></svg>
+</a>
+
+<script>
+// header scroll state
+const header=document.getElementById('top');
+addEventListener('scroll',()=>header.classList.toggle('scrolled',scrollY>20));
+
+// mobile drawer
+const drawer=document.getElementById('drawer');
+document.getElementById('burger').onclick=()=>drawer.classList.add('open');
+document.getElementById('drawerClose').onclick=()=>drawer.classList.remove('open');
+drawer.querySelectorAll('a').forEach(a=>a.onclick=()=>drawer.classList.remove('open'));
+
+// scroll reveal
+const io=new IntersectionObserver((es)=>{
+  es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})
+},{threshold:.12,rootMargin:'0px 0px -8% 0px'});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+// before/after sliders
+document.querySelectorAll('.ba').forEach(ba=>{
+  const r=ba.querySelector('.ba-range');
+  const upd=()=>ba.style.setProperty('--pos',r.value+'%');
+  r.addEventListener('input',upd);
+  // allow click/drag anywhere on the image to move the handle
+  const move=e=>{
+    const rect=ba.getBoundingClientRect();
+    const x=(e.touches?e.touches[0].clientX:e.clientX)-rect.left;
+    r.value=Math.max(0,Math.min(100,(x/rect.width)*100));upd();
+  };
+  ba.addEventListener('pointerdown',e=>{move(e);const mv=ev=>move(ev);
+    const up=()=>{removeEventListener('pointermove',mv);removeEventListener('pointerup',up)};
+    addEventListener('pointermove',mv);addEventListener('pointerup',up)});
+  upd();
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,11 @@
+# Vercel (vínculo local de deploy — não versionar)
+.vercel
+
+# Sistema operacional
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs e dependências
+node_modules/
+*.log
