@@ -80,8 +80,9 @@ h1,h2,h3{font-family:var(--serif);font-weight:600;line-height:1.04;letter-spacin
   display:inline-flex;align-items:center;gap:11px;font-family:var(--sans);font-weight:600;
   font-size:.92rem;letter-spacing:.01em;padding:16px 28px;border-radius:100px;cursor:pointer;
   border:1px solid transparent;transition:transform .4s var(--ease),box-shadow .4s var(--ease),background .3s;
-  white-space:normal;max-width:100%;text-align:center;justify-content:center;
+  white-space:nowrap;max-width:100%;text-align:center;justify-content:center;
 }
+@media(max-width:600px){.btn{white-space:normal}}
 .btn svg{width:18px;height:18px;flex:none}
 .btn-wa{background:var(--wa);color:#fff;box-shadow:0 14px 30px -12px rgba(18,140,90,.7)}
 .btn-wa:hover{transform:translateY(-3px);box-shadow:0 22px 44px -14px rgba(18,140,90,.8);background:#20bd5b}
@@ -124,8 +125,8 @@ header .wrap{display:flex;align-items:center;justify-content:space-between;min-h
 }
 .logo-txt b{font-family:var(--serif);font-size:1.18rem;font-weight:700;color:var(--wine);display:block;line-height:1}
 .logo-txt span{font-size:.62rem;letter-spacing:.28em;text-transform:uppercase;color:var(--mauve);font-weight:600}
-nav.main{display:flex;align-items:center;gap:30px}
-nav.main a.nl{font-size:.86rem;font-weight:500;color:var(--espresso);position:relative;padding:4px 0}
+nav.main{display:flex;align-items:center;gap:22px}
+nav.main a.nl{font-size:.85rem;font-weight:500;color:var(--espresso);position:relative;padding:4px 0;white-space:nowrap}
 nav.main a.nl::after{content:"";position:absolute;left:0;bottom:-2px;width:0;height:1.5px;background:var(--caramel);transition:width .35s var(--ease)}
 nav.main a.nl:hover::after{width:100%}
 .header-cta{display:flex;align-items:center;gap:14px}
@@ -281,6 +282,23 @@ nav.main a.nl:hover::after{width:100%}
 .team-photo{max-width:860px;margin:0 auto;border-radius:24px;overflow:hidden;border:8px solid #fff;
   box-shadow:var(--shadow-lg);aspect-ratio:680/453;position:relative}
 .team-photo::after{content:"";position:absolute;inset:0;box-shadow:inset 0 -70px 70px -40px rgba(54,32,42,.4);pointer-events:none}
+.team-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;max-width:1000px;margin:0 auto}
+.team-card{position:relative;border-radius:18px;overflow:hidden;aspect-ratio:3/4;box-shadow:var(--shadow-md);
+  border:5px solid #fff;margin:0;transition:transform .45s var(--ease)}
+.team-card::after{content:"";position:absolute;inset:0;box-shadow:inset 0 -46px 46px -30px rgba(54,32,42,.4);pointer-events:none}
+.team-card:hover{transform:translateY(-6px)}
+@media(max-width:780px){.team-grid{grid-template-columns:1fr 1fr;gap:14px}}
+
+/* ============== GALLERY / ESTRUTURA ============== */
+.gallery{background:linear-gradient(180deg,var(--ivory),var(--cream))}
+.gal-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:1080px;margin:0 auto}
+.gal{position:relative;border-radius:18px;overflow:hidden;aspect-ratio:4/3;box-shadow:var(--shadow-md);
+  border:5px solid #fff;transition:transform .5s var(--ease)}
+.gal img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .8s var(--ease)}
+.gal:hover{transform:translateY(-5px)}
+.gal:hover img{transform:scale(1.06)}
+@media(max-width:780px){.gal-grid{grid-template-columns:1fr 1fr}.gal:last-child{grid-column:1/-1;aspect-ratio:16/9}}
+@media(max-width:480px){.gal-grid{grid-template-columns:1fr}.gal:last-child{aspect-ratio:4/3}}
 .team-vals{display:flex;justify-content:center;gap:clamp(30px,6vw,60px);flex-wrap:wrap;margin-top:42px}
 .tv{text-align:center}
 .tv b{font-family:var(--serif);font-size:clamp(2rem,4vw,2.6rem);color:var(--wine);display:block;line-height:1}
@@ -394,8 +412,7 @@ header.scrolled .logo-img{height:42px;transition:height .4s var(--ease)}
 <div class="topbar">
   <div class="wrap">
     <span class="tb-rating">
-      <svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 17.27 6.18 3.73-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-      <span class="tb-stars">★★★★★</span> 4,8 · 98 avaliações no Google
+      <span class="tb-stars">★★★★★</span> <strong>4,8</strong> · 98 avaliações no Google
     </span>
     <a class="tb-hide" href="tel:+554833443578">
       <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.6.1.4 0 .8-.3 1.1l-2.2 2.2z"/></svg>
@@ -414,6 +431,7 @@ header.scrolled .logo-img{height:42px;transition:height .4s var(--ease)}
       <a class="nl" href="#servicos">Especialidades</a>
       <a class="nl" href="#diferenciais">Diferenciais</a>
       <a class="nl" href="#equipe">A Equipe</a>
+      <a class="nl" href="#estrutura">Estrutura</a>
       <a class="nl" href="#resultados">Resultados</a>
       <a class="nl" href="#avaliacoes">Avaliações</a>
       <a class="nl" href="#contato">Contato</a>
@@ -434,6 +452,7 @@ header.scrolled .logo-img{height:42px;transition:height .4s var(--ease)}
   <a href="#servicos">Especialidades</a>
   <a href="#diferenciais">Diferenciais</a>
   <a href="#equipe">A Equipe</a>
+  <a href="#estrutura">Estrutura</a>
   <a href="#resultados">Resultados</a>
   <a href="#avaliacoes">Avaliações</a>
   <a href="#contato">Contato</a>
@@ -469,7 +488,7 @@ header.scrolled .logo-img{height:42px;transition:height .4s var(--ease)}
     <div class="hero-visual reveal d2">
       <svg class="hero-leaf" style="top:-30px;left:-40px;width:120px" viewBox="0 0 100 100" fill="currentColor"><path d="M50 95C50 60 20 40 10 10c40 5 55 40 40 85z M50 95C50 60 80 40 90 10c-40 5-55 40-40 85z"/></svg>
       <div class="hero-photo">
-        <img class="frame-img" style="object-position:50% 25%" src="assets/dra-vanessa-b.jpg" alt="Dra. Vanessa Thiemi, responsável técnica do Centro Odontológico Palhoça" />
+        <img class="frame-img" style="object-position:50% 16%" src="assets/hero.jpg" alt="Profissional da equipe COP na recepção do consultório" />
       </div>
       <div class="float-card fc-1">
         <span class="ic" style="background:linear-gradient(140deg,var(--sage),#5f6b50)">
@@ -572,10 +591,10 @@ header.scrolled .logo-img{height:42px;transition:height .4s var(--ease)}
   <div class="wrap why-grid">
     <div class="why-visual reveal">
       <div class="why-photo">
-        <img class="frame-img" src="assets/espaco-02.webp" alt="Recepção da COP com parede de plantas e letreiro Sorria todo dia" />
+        <img class="frame-img" src="assets/ambiente-lounge.jpg" alt="Lounge da COP com parede de plantas e letreiro Sorria todo dia" />
       </div>
       <div class="why-photo small">
-        <img class="frame-img" src="assets/ambiente-01.webp" alt="Espaço Kids da COP" />
+        <img class="frame-img" src="assets/recepcao.jpg" alt="Recepção da COP com a marca na parede de mármore" />
       </div>
     </div>
     <div class="why-copy">
@@ -608,7 +627,7 @@ header.scrolled .logo-img{height:42px;transition:height .4s var(--ease)}
 <section class="section doc" id="equipe">
   <div class="wrap doc-grid">
     <div class="doc-photo reveal">
-      <img class="frame-img" style="object-position:50% 30%" src="assets/dra-vanessa-a.jpg" alt="Dra. Vanessa Thiemi segurando uma prótese dentária" />
+      <img class="frame-img" style="object-position:50% 14%" src="assets/dra-vanessa.jpg" alt="Dra. Vanessa Thiemi, responsável técnica da COP" />
     </div>
     <div class="doc-copy reveal d1">
       <span class="eyebrow">Responsável Técnica</span>
@@ -636,13 +655,32 @@ header.scrolled .logo-img{height:42px;transition:height .4s var(--ease)}
       <h2>Uma equipe que faz você <span class="script">sorrir</span></h2>
       <p>Profissionais especializadas e apaixonadas pelo que fazem — prontas para acolher você e toda a sua família.</p>
     </div>
-    <div class="team-photo reveal d1">
-      <img class="frame-img" src="assets/equipe-01.webp" alt="Equipe do Centro Odontológico Palhoça" />
+    <div class="team-grid">
+      <figure class="team-card reveal"><img class="frame-img" src="assets/equipe-1.jpg" alt="Profissional da equipe COP" /></figure>
+      <figure class="team-card reveal d1"><img class="frame-img" src="assets/equipe-2.jpg" alt="Profissional da equipe COP" /></figure>
+      <figure class="team-card reveal d2"><img class="frame-img" src="assets/equipe-3.jpg" alt="Profissional da equipe COP" /></figure>
+      <figure class="team-card reveal d3"><img class="frame-img" src="assets/equipe-4.jpg" alt="Profissional da equipe COP" /></figure>
     </div>
     <div class="team-vals reveal d2">
       <div class="tv"><b><span class="plus">+</span>6</b><span>especialistas dedicadas</span></div>
       <div class="tv"><b><span class="plus">+</span>10</b><span>anos de história</span></div>
       <div class="tv"><b>100%</b><span>atendimento humanizado</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY / ESTRUTURA -->
+<section class="section gallery" id="estrutura">
+  <div class="wrap">
+    <div class="shead reveal">
+      <span class="eyebrow" style="justify-content:center">Nossa estrutura</span>
+      <h2>Um espaço pensado <span class="script">para o seu conforto</span></h2>
+      <p>Consultórios modernos, ambiente acolhedor e cada detalhe preparado para você se sentir bem.</p>
+    </div>
+    <div class="gal-grid">
+      <figure class="gal reveal"><img src="assets/estrutura-1.jpg" alt="Consultório odontológico moderno da COP" /></figure>
+      <figure class="gal reveal d1"><img src="assets/estrutura-2.jpg" alt="Sala de espera da COP" /></figure>
+      <figure class="gal reveal d2"><img src="assets/estrutura-3.jpg" alt="Detalhe acolhedor do ambiente da COP" /></figure>
     </div>
   </div>
 </section>
