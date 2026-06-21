@@ -210,7 +210,7 @@ nav.main a.nl:hover::after{width:100%}
 .stat{text-align:center;padding:14px}
 .stat b{font-family:var(--serif);font-size:clamp(2.4rem,5vw,3.4rem);color:var(--wine);font-weight:700;line-height:1;display:block}
 .stat span{font-size:.82rem;color:var(--espresso-soft);letter-spacing:.04em;display:block;margin-top:8px}
-.stat .plus{color:var(--caramel)}
+.stat .plus{color:var(--caramel);display:inline;font-size:.5em;vertical-align:.75em;font-weight:700;margin-right:1px}
 @media(max-width:680px){.stats-grid{grid-template-columns:1fr 1fr;gap:34px 16px}}
 
 /* ============== SECTION HEAD ============== */
@@ -289,6 +289,33 @@ nav.main a.nl:hover::after{width:100%}
 .team-card:hover{transform:translateY(-6px)}
 @media(max-width:780px){.team-grid{grid-template-columns:1fr 1fr;gap:14px}}
 
+/* ============== TEAM CAROUSEL ============== */
+.tc-wrap{position:relative;margin-top:8px}
+.tc-track{display:flex;gap:22px;overflow-x:auto;scroll-snap-type:x mandatory;padding:12px 4px 28px;
+  scroll-behavior:smooth;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.tc-track::-webkit-scrollbar{display:none}
+.tc-card{flex:0 0 290px;scroll-snap-align:start}
+.tc-photo{aspect-ratio:3/4;border-radius:18px;overflow:hidden;position:relative;
+  background:linear-gradient(160deg,var(--sand),var(--ivory));display:grid;place-items:center;box-shadow:var(--shadow-md)}
+.tc-photo img{width:100%;height:100%;object-fit:cover;display:block}
+.tc-ph{display:flex;flex-direction:column;align-items:center;gap:10px;color:var(--mauve)}
+.tc-ph svg{width:62px;height:62px;opacity:.5}
+.tc-ph span{font-size:.64rem;letter-spacing:.18em;text-transform:uppercase;opacity:.8}
+.tc-info{background:#fff;border:1px solid var(--line);border-radius:16px;margin:-42px 14px 0;
+  padding:26px 18px 20px;position:relative;z-index:2;box-shadow:var(--shadow-sm);text-align:center}
+.tc-info h3{font-size:1.28rem;color:var(--wine);line-height:1.15;min-height:2.5em;
+  display:flex;align-items:center;justify-content:center}
+.tc-line{width:42px;height:2px;background:var(--caramel);margin:8px auto 12px;border-radius:2px}
+.tc-role{font-size:.82rem;font-weight:600;color:var(--caramel);letter-spacing:.02em;min-height:2.4em}
+.tc-desc{margin-top:14px;background:var(--cream);border-radius:10px;padding:12px 14px;
+  font-size:.81rem;color:var(--espresso-soft);line-height:1.5}
+.tc-nav{display:flex;gap:12px;justify-content:center;margin-top:4px}
+.tc-btn{width:48px;height:48px;border-radius:50%;border:1px solid var(--rose);background:#fff;color:var(--wine);
+  display:grid;place-items:center;cursor:pointer;transition:transform .3s var(--ease),background .3s,color .3s}
+.tc-btn:hover{background:var(--wine);color:#fff;border-color:var(--wine);transform:translateY(-2px)}
+.tc-btn svg{width:20px;height:20px}
+@media(max-width:520px){.tc-card{flex-basis:78vw}}
+
 /* ============== GALLERY / ESTRUTURA ============== */
 .gallery{background:linear-gradient(180deg,var(--ivory),var(--cream))}
 .gal-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:1080px;margin:0 auto}
@@ -299,10 +326,10 @@ nav.main a.nl:hover::after{width:100%}
 .gal:hover img{transform:scale(1.06)}
 @media(max-width:780px){.gal-grid{grid-template-columns:1fr 1fr}.gal:last-child{grid-column:1/-1;aspect-ratio:16/9}}
 @media(max-width:480px){.gal-grid{grid-template-columns:1fr}.gal:last-child{aspect-ratio:4/3}}
-.team-vals{display:flex;justify-content:center;gap:clamp(30px,6vw,60px);flex-wrap:wrap;margin-top:42px}
+.team-vals{display:flex;justify-content:center;align-items:flex-start;gap:clamp(30px,6vw,60px);flex-wrap:wrap;margin-top:42px}
 .tv{text-align:center}
-.tv b{font-family:var(--serif);font-size:clamp(2rem,4vw,2.6rem);color:var(--wine);display:block;line-height:1}
-.tv .plus{color:var(--caramel)}
+.tv b{font-family:var(--serif);font-size:clamp(2rem,4vw,2.6rem);color:var(--wine);display:block;line-height:1.05;height:1.05em}
+.tv .plus{color:var(--caramel);display:inline;font-size:.5em;vertical-align:.75em;font-weight:700;margin-right:1px}
 .tv span{font-size:.82rem;color:var(--espresso-soft);margin-top:6px;display:block}
 
 /* ============== BEFORE / AFTER ============== */
@@ -655,14 +682,44 @@ header.scrolled .logo-img{height:42px;transition:height .4s var(--ease)}
       <h2>Uma equipe que faz você <span class="script">sorrir</span></h2>
       <p>Profissionais especializadas e apaixonadas pelo que fazem — prontas para acolher você e toda a sua família.</p>
     </div>
-    <div class="team-grid">
-      <figure class="team-card reveal"><img class="frame-img" src="assets/equipe-1.jpg" alt="Profissional da equipe COP" /></figure>
-      <figure class="team-card reveal d1"><img class="frame-img" src="assets/equipe-2.jpg" alt="Profissional da equipe COP" /></figure>
-      <figure class="team-card reveal d2"><img class="frame-img" src="assets/equipe-3.jpg" alt="Profissional da equipe COP" /></figure>
-      <figure class="team-card reveal d3"><img class="frame-img" src="assets/equipe-4.jpg" alt="Profissional da equipe COP" /></figure>
+    <div class="tc-wrap reveal d1">
+      <div class="tc-track" id="tcTrack">
+        <article class="tc-card">
+          <div class="tc-photo"><div class="tc-ph"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 12a5 5 0 1 0 0-10 5 5 0 0 0 0 10zm0 2c-4 0-8 2-8 6v2h16v-2c0-4-4-6-8-6z"/></svg><span>Foto profissional</span></div></div>
+          <div class="tc-info"><h3>Dra. Nome Sobrenome</h3><div class="tc-line"></div><div class="tc-role">Especialista em Ortodontia</div><div class="tc-desc">Alinhamento e correção do sorriso com aparelhos fixos e invisíveis.</div></div>
+        </article>
+        <article class="tc-card">
+          <div class="tc-photo"><div class="tc-ph"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 12a5 5 0 1 0 0-10 5 5 0 0 0 0 10zm0 2c-4 0-8 2-8 6v2h16v-2c0-4-4-6-8-6z"/></svg><span>Foto profissional</span></div></div>
+          <div class="tc-info"><h3>Dr. Nome Sobrenome</h3><div class="tc-line"></div><div class="tc-role">Especialista em Implantodontia</div><div class="tc-desc">Reposição de dentes com implantes seguros, naturais e duradouros.</div></div>
+        </article>
+        <article class="tc-card">
+          <div class="tc-photo"><div class="tc-ph"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 12a5 5 0 1 0 0-10 5 5 0 0 0 0 10zm0 2c-4 0-8 2-8 6v2h16v-2c0-4-4-6-8-6z"/></svg><span>Foto profissional</span></div></div>
+          <div class="tc-info"><h3>Dra. Nome Sobrenome</h3><div class="tc-line"></div><div class="tc-role">Especialista em Endodontia</div><div class="tc-desc">Tratamento de canal com tecnologia e o mínimo de desconforto.</div></div>
+        </article>
+        <article class="tc-card">
+          <div class="tc-photo"><div class="tc-ph"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 12a5 5 0 1 0 0-10 5 5 0 0 0 0 10zm0 2c-4 0-8 2-8 6v2h16v-2c0-4-4-6-8-6z"/></svg><span>Foto profissional</span></div></div>
+          <div class="tc-info"><h3>Dra. Nome Sobrenome</h3><div class="tc-line"></div><div class="tc-role">Especialista em Odontopediatria</div><div class="tc-desc">Cuidado gentil e acolhedor para o sorriso das crianças.</div></div>
+        </article>
+        <article class="tc-card">
+          <div class="tc-photo"><div class="tc-ph"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 12a5 5 0 1 0 0-10 5 5 0 0 0 0 10zm0 2c-4 0-8 2-8 6v2h16v-2c0-4-4-6-8-6z"/></svg><span>Foto profissional</span></div></div>
+          <div class="tc-info"><h3>Dra. Nome Sobrenome</h3><div class="tc-line"></div><div class="tc-role">Especialista em Periodontia</div><div class="tc-desc">Saúde da gengiva e dos tecidos que sustentam o seu sorriso.</div></div>
+        </article>
+        <article class="tc-card">
+          <div class="tc-photo"><div class="tc-ph"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 12a5 5 0 1 0 0-10 5 5 0 0 0 0 10zm0 2c-4 0-8 2-8 6v2h16v-2c0-4-4-6-8-6z"/></svg><span>Foto profissional</span></div></div>
+          <div class="tc-info"><h3>Dra. Nome Sobrenome</h3><div class="tc-line"></div><div class="tc-role">Especialista em Prótese Dentária</div><div class="tc-desc">Próteses e protocolos sob medida para devolver função e estética.</div></div>
+        </article>
+        <article class="tc-card">
+          <div class="tc-photo"><div class="tc-ph"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 12a5 5 0 1 0 0-10 5 5 0 0 0 0 10zm0 2c-4 0-8 2-8 6v2h16v-2c0-4-4-6-8-6z"/></svg><span>Foto profissional</span></div></div>
+          <div class="tc-info"><h3>Dra. Nome Sobrenome</h3><div class="tc-line"></div><div class="tc-role">Especialista em Harmonização Facial</div><div class="tc-desc">Realce da beleza natural com procedimentos estéticos faciais.</div></div>
+        </article>
+      </div>
+      <div class="tc-nav">
+        <button class="tc-btn" id="tcPrev" aria-label="Profissional anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 6l-6 6 6 6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <button class="tc-btn" id="tcNext" aria-label="Próximo profissional"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      </div>
     </div>
     <div class="team-vals reveal d2">
-      <div class="tv"><b><span class="plus">+</span>6</b><span>especialistas dedicadas</span></div>
+      <div class="tv"><b><span class="plus">+</span>7</b><span>especialistas dedicadas</span></div>
       <div class="tv"><b><span class="plus">+</span>10</b><span>anos de história</span></div>
       <div class="tv"><b>100%</b><span>atendimento humanizado</span></div>
     </div>
@@ -877,6 +934,15 @@ const io=new IntersectionObserver((es)=>{
   es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})
 },{threshold:.12,rootMargin:'0px 0px -8% 0px'});
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+// team carousel
+const tcTrack=document.getElementById('tcTrack');
+if(tcTrack){
+  const step=()=>{const c=tcTrack.querySelector('.tc-card');return c?c.getBoundingClientRect().width+22:300};
+  const p=document.getElementById('tcPrev'),n=document.getElementById('tcNext');
+  if(p)p.onclick=()=>tcTrack.scrollBy({left:-step(),behavior:'smooth'});
+  if(n)n.onclick=()=>tcTrack.scrollBy({left:step(),behavior:'smooth'});
+}
 
 // before/after sliders
 document.querySelectorAll('.ba').forEach(ba=>{
