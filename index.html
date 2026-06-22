@@ -294,21 +294,24 @@ nav.main a.nl:hover::after{width:100%}
 .tc-track{display:flex;gap:22px;overflow-x:auto;scroll-snap-type:x mandatory;padding:12px 4px 28px;
   scroll-behavior:smooth;-webkit-overflow-scrolling:touch;scrollbar-width:none}
 .tc-track::-webkit-scrollbar{display:none}
-.tc-card{flex:0 0 290px;scroll-snap-align:start}
-.tc-photo{aspect-ratio:3/4;border-radius:18px;overflow:hidden;position:relative;
+.tc-card{flex:0 0 290px;scroll-snap-align:start;display:flex;flex-direction:column}
+.tc-photo{aspect-ratio:3/4;flex:none;border-radius:18px;overflow:hidden;position:relative;
   background:linear-gradient(160deg,var(--sand),var(--ivory));display:grid;place-items:center;box-shadow:var(--shadow-md)}
 .tc-photo img{width:100%;height:100%;object-fit:cover;display:block}
 .tc-ph{display:flex;flex-direction:column;align-items:center;gap:10px;color:var(--mauve)}
 .tc-ph svg{width:62px;height:62px;opacity:.5}
 .tc-ph span{font-size:.64rem;letter-spacing:.18em;text-transform:uppercase;opacity:.8}
 .tc-info{background:#fff;border:1px solid var(--line);border-radius:16px;margin:-42px 14px 0;
-  padding:26px 18px 20px;position:relative;z-index:2;box-shadow:var(--shadow-sm);text-align:center}
+  padding:26px 18px 20px;position:relative;z-index:2;box-shadow:var(--shadow-sm);text-align:center;
+  flex:1;display:flex;flex-direction:column}
 .tc-info h3{font-size:1.28rem;color:var(--wine);line-height:1.15;min-height:2.5em;
   display:flex;align-items:center;justify-content:center}
 .tc-line{width:42px;height:2px;background:var(--caramel);margin:8px auto 12px;border-radius:2px}
-.tc-role{font-size:.82rem;font-weight:600;color:var(--caramel);letter-spacing:.02em;min-height:2.4em}
+.tc-role{font-size:.82rem;font-weight:600;color:var(--caramel);letter-spacing:.02em;line-height:1.35;
+  height:60px;display:flex;align-items:center;justify-content:center;text-align:center}
 .tc-desc{margin-top:14px;background:var(--cream);border-radius:10px;padding:12px 14px;
-  font-size:.81rem;color:var(--espresso-soft);line-height:1.5}
+  font-size:.81rem;color:var(--espresso-soft);line-height:1.5;flex:1;
+  display:flex;align-items:center;justify-content:center}
 .tc-nav{display:flex;gap:12px;justify-content:center;margin-top:4px}
 .tc-btn{width:48px;height:48px;border-radius:50%;border:1px solid var(--rose);background:#fff;color:var(--wine);
   display:grid;place-items:center;cursor:pointer;transition:transform .3s var(--ease),background .3s,color .3s}
@@ -685,27 +688,27 @@ header.scrolled .logo-img{height:42px;transition:height .4s var(--ease)}
     <div class="tc-wrap reveal d1">
       <div class="tc-track" id="tcTrack">
         <article class="tc-card">
-          <div class="tc-photo"><div class="tc-ph"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 12a5 5 0 1 0 0-10 5 5 0 0 0 0 10zm0 2c-4 0-8 2-8 6v2h16v-2c0-4-4-6-8-6z"/></svg><span>Foto profissional</span></div></div>
+          <div class="tc-photo"><img class="frame-img" src="assets/equipe-vanessa.jpg" alt="Dra. Vanessa" /></div>
           <div class="tc-info"><h3>Dra. Vanessa</h3><div class="tc-line"></div><div class="tc-role">Especialista em Endodontia e Prótese</div><div class="tc-desc">Tratamento de canal e reabilitação com próteses sob medida.</div></div>
         </article>
         <article class="tc-card">
-          <div class="tc-photo"><div class="tc-ph"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 12a5 5 0 1 0 0-10 5 5 0 0 0 0 10zm0 2c-4 0-8 2-8 6v2h16v-2c0-4-4-6-8-6z"/></svg><span>Foto profissional</span></div></div>
+          <div class="tc-photo"><img class="frame-img" src="assets/equipe-aicha.jpg" alt="Dra. Aicha Zindz" /></div>
           <div class="tc-info"><h3>Dra. Aicha Zindz</h3><div class="tc-line"></div><div class="tc-role">Clínica Geral</div><div class="tc-desc">Cuidado completo do dia a dia para manter o seu sorriso saudável.</div></div>
         </article>
         <article class="tc-card">
-          <div class="tc-photo"><div class="tc-ph"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 12a5 5 0 1 0 0-10 5 5 0 0 0 0 10zm0 2c-4 0-8 2-8 6v2h16v-2c0-4-4-6-8-6z"/></svg><span>Foto profissional</span></div></div>
+          <div class="tc-photo"><img class="frame-img" src="assets/equipe-ana.jpg" alt="Dra. Ana Cristina" /></div>
           <div class="tc-info"><h3>Dra. Ana Cristina</h3><div class="tc-line"></div><div class="tc-role">Especialista em Ortodontia</div><div class="tc-desc">Alinhamento do sorriso com aparelhos fixos e invisíveis.</div></div>
         </article>
         <article class="tc-card">
-          <div class="tc-photo"><div class="tc-ph"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 12a5 5 0 1 0 0-10 5 5 0 0 0 0 10zm0 2c-4 0-8 2-8 6v2h16v-2c0-4-4-6-8-6z"/></svg><span>Foto profissional</span></div></div>
+          <div class="tc-photo"><img class="frame-img" src="assets/equipe-andreiny.jpg" alt="Dra. Andreiny Duarte" /></div>
           <div class="tc-info"><h3>Dra. Andreiny Duarte</h3><div class="tc-line"></div><div class="tc-role">Especialista em Odontopediatria</div><div class="tc-desc">Atendimento gentil e acolhedor para o sorriso das crianças.</div></div>
         </article>
         <article class="tc-card">
-          <div class="tc-photo"><div class="tc-ph"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 12a5 5 0 1 0 0-10 5 5 0 0 0 0 10zm0 2c-4 0-8 2-8 6v2h16v-2c0-4-4-6-8-6z"/></svg><span>Foto profissional</span></div></div>
+          <div class="tc-photo"><img class="frame-img" src="assets/equipe-erica.jpg" alt="Dra. Erica Abe" /></div>
           <div class="tc-info"><h3>Dra. Erica</h3><div class="tc-line"></div><div class="tc-role">Especialista em Harmonização Orofacial</div><div class="tc-desc">Realce da beleza natural com procedimentos estéticos faciais.</div></div>
         </article>
         <article class="tc-card">
-          <div class="tc-photo"><div class="tc-ph"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 12a5 5 0 1 0 0-10 5 5 0 0 0 0 10zm0 2c-4 0-8 2-8 6v2h16v-2c0-4-4-6-8-6z"/></svg><span>Foto profissional</span></div></div>
+          <div class="tc-photo"><img class="frame-img" src="assets/equipe-fabio.jpg" alt="Dr. Fábio Sanches" /></div>
           <div class="tc-info"><h3>Dr. Fábio Sanches</h3><div class="tc-line"></div><div class="tc-role">Especialista em Implantes</div><div class="tc-desc">Reposição de dentes com implantes seguros, naturais e duradouros.</div></div>
         </article>
         <article class="tc-card">
