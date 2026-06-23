@@ -358,19 +358,25 @@ nav.main a.nl:hover::after{width:100%}
 @media(max-width:760px){.ba-grid{grid-template-columns:1fr;max-width:400px;gap:46px}}
 
 /* ============== TESTIMONIALS ============== */
-.tst-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
-.tst{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:32px 28px;position:relative;
+.tst-track{display:flex;gap:24px;overflow-x:auto;scroll-snap-type:x mandatory;padding:8px 4px 26px;
+  scroll-behavior:smooth;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.tst-track::-webkit-scrollbar{display:none}
+.tst{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:30px 26px;position:relative;
+  flex:0 0 calc((100% - 48px)/3);scroll-snap-align:start;display:flex;flex-direction:column;
   transition:transform .45s var(--ease),box-shadow .45s var(--ease)}
 .tst:hover{transform:translateY(-6px);box-shadow:var(--shadow-md)}
 .tst .quote{font-family:var(--serif);font-size:4rem;color:var(--rose);line-height:.6;height:30px}
 .tst .stars{color:var(--gold);letter-spacing:2px;margin:6px 0 12px;font-size:.9rem}
-.tst p{font-family:var(--serif);font-style:italic;font-size:1.18rem;color:var(--espresso);line-height:1.4}
-.tst .who{display:flex;align-items:center;gap:12px;margin-top:22px;padding-top:18px;border-top:1px solid var(--line)}
-.tst .av{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;color:#fff;font-weight:600;font-family:var(--serif);
+.tst p{font-family:var(--serif);font-style:italic;font-size:1.02rem;color:var(--espresso);line-height:1.5;flex:1}
+.tst .who{display:flex;align-items:center;gap:12px;margin-top:20px;padding-top:18px;border-top:1px solid var(--line)}
+.tst a.who small{transition:color .3s}
+.tst a.who:hover small{color:var(--wine)}
+.tst .av{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;color:#fff;font-weight:600;font-family:var(--serif);flex:none;
   background:linear-gradient(140deg,var(--caramel),var(--wine))}
 .tst .who b{font-size:.92rem;color:var(--wine);display:block}
 .tst .who small{font-size:.72rem;color:var(--espresso-soft);display:inline-flex;align-items:center;gap:5px}
-@media(max-width:900px){.tst-grid{grid-template-columns:1fr}.tst{max-width:520px;margin:0 auto}}
+@media(max-width:900px){.tst{flex-basis:calc((100% - 24px)/2)}}
+@media(max-width:620px){.tst{flex-basis:86%}}
 
 /* ============== CTA BAND ============== */
 .cta-band{position:relative;overflow:hidden;
@@ -794,25 +800,31 @@ header.scrolled .logo-img{height:42px;transition:height .4s var(--ease)}
       <h2>Nota <span class="script">4,8</span> de quem confiou</h2>
       <p>Avaliações reais de quem já passou pela COP — e voltou a sorrir.</p>
     </div>
-    <div class="tst-grid">
-      <article class="tst reveal">
-        <div class="quote">“</div>
-        <div class="stars">★★★★★</div>
-        <p>Super recomendo, Dra. Vanessa e sua equipe são nota mil!</p>
-        <div class="who"><span class="av">J</span><div><b>Janaina Petry</b><small><svg viewBox="0 0 24 24" width="13" height="13"><path fill="#4285F4" d="M22.5 12.2c0-.8-.1-1.5-.2-2.2H12v4.2h5.9c-.3 1.4-1 2.5-2.2 3.3v2.8h3.6c2.1-1.9 3.2-4.8 3.2-8.1z"/><path fill="#34A853" d="M12 23c2.9 0 5.4-1 7.2-2.7l-3.6-2.8c-1 .7-2.3 1.1-3.6 1.1-2.8 0-5.1-1.9-6-4.4H2.3v2.9C4.1 20.8 7.8 23 12 23z"/><path fill="#FBBC05" d="M6 14.2c-.2-.7-.4-1.4-.4-2.2s.1-1.5.4-2.2V6.9H2.3C1.5 8.4 1 10.1 1 12s.5 3.6 1.3 5.1L6 14.2z"/><path fill="#EA4335" d="M12 5.4c1.6 0 3 .5 4.1 1.6l3.1-3.1C17.4 2.1 14.9 1 12 1 7.8 1 4.1 3.2 2.3 6.9L6 9.8c.9-2.5 3.2-4.4 6-4.4z"/></svg>via Google</small></div></div>
-      </article>
-      <article class="tst reveal d1">
-        <div class="quote">“</div>
-        <div class="stars">★★★★★</div>
-        <p>Ambiente limpo, organizado, climatizado e com espaço kids.</p>
-        <div class="who"><span class="av">A</span><div><b>Amanda Diel Rodrigues</b><small><svg viewBox="0 0 24 24" width="13" height="13"><path fill="#4285F4" d="M22.5 12.2c0-.8-.1-1.5-.2-2.2H12v4.2h5.9c-.3 1.4-1 2.5-2.2 3.3v2.8h3.6c2.1-1.9 3.2-4.8 3.2-8.1z"/><path fill="#34A853" d="M12 23c2.9 0 5.4-1 7.2-2.7l-3.6-2.8c-1 .7-2.3 1.1-3.6 1.1-2.8 0-5.1-1.9-6-4.4H2.3v2.9C4.1 20.8 7.8 23 12 23z"/><path fill="#FBBC05" d="M6 14.2c-.2-.7-.4-1.4-.4-2.2s.1-1.5.4-2.2V6.9H2.3C1.5 8.4 1 10.1 1 12s.5 3.6 1.3 5.1L6 14.2z"/><path fill="#EA4335" d="M12 5.4c1.6 0 3 .5 4.1 1.6l3.1-3.1C17.4 2.1 14.9 1 12 1 7.8 1 4.1 3.2 2.3 6.9L6 9.8c.9-2.5 3.2-4.4 6-4.4z"/></svg>via Google</small></div></div>
-      </article>
-      <article class="tst reveal d2">
-        <div class="quote">“</div>
-        <div class="stars">★★★★★</div>
-        <p>Clínica muito boa, agendamento sem complicação, recomendo muito.</p>
-        <div class="who"><span class="av">A</span><div><b>Alexandre Zambrozuski</b><small><svg viewBox="0 0 24 24" width="13" height="13"><path fill="#4285F4" d="M22.5 12.2c0-.8-.1-1.5-.2-2.2H12v4.2h5.9c-.3 1.4-1 2.5-2.2 3.3v2.8h3.6c2.1-1.9 3.2-4.8 3.2-8.1z"/><path fill="#34A853" d="M12 23c2.9 0 5.4-1 7.2-2.7l-3.6-2.8c-1 .7-2.3 1.1-3.6 1.1-2.8 0-5.1-1.9-6-4.4H2.3v2.9C4.1 20.8 7.8 23 12 23z"/><path fill="#FBBC05" d="M6 14.2c-.2-.7-.4-1.4-.4-2.2s.1-1.5.4-2.2V6.9H2.3C1.5 8.4 1 10.1 1 12s.5 3.6 1.3 5.1L6 14.2z"/><path fill="#EA4335" d="M12 5.4c1.6 0 3 .5 4.1 1.6l3.1-3.1C17.4 2.1 14.9 1 12 1 7.8 1 4.1 3.2 2.3 6.9L6 9.8c.9-2.5 3.2-4.4 6-4.4z"/></svg>via Google</small></div></div>
-      </article>
+    <div class="tst-carousel reveal">
+      <div class="tst-track" id="tstTrack">
+        <article class="tst"><div class="quote">“</div><div class="stars">★★★★★</div><p>Procurei a clínica com dor e fui atendida com muita rapidez e profissionalismo pela Dra. Vanessa, especialista em canal e prótese. Me senti segura e confiante. Adorei o ambiente e o atendimento. Super indico!</p><a class="who" href="https://maps.app.goo.gl/PB9XBEr9Xc5gciGS8" target="_blank" rel="noopener"><span class="av">A</span><div><b>Adriana Feijó</b><small><svg viewBox="0 0 24 24" width="13" height="13"><path fill="#4285F4" d="M22.5 12.2c0-.8-.1-1.5-.2-2.2H12v4.2h5.9c-.3 1.4-1 2.5-2.2 3.3v2.8h3.6c2.1-1.9 3.2-4.8 3.2-8.1z"/><path fill="#34A853" d="M12 23c2.9 0 5.4-1 7.2-2.7l-3.6-2.8c-1 .7-2.3 1.1-3.6 1.1-2.8 0-5.1-1.9-6-4.4H2.3v2.9C4.1 20.8 7.8 23 12 23z"/><path fill="#FBBC05" d="M6 14.2c-.2-.7-.4-1.4-.4-2.2s.1-1.5.4-2.2V6.9H2.3C1.5 8.4 1 10.1 1 12s.5 3.6 1.3 5.1L6 14.2z"/><path fill="#EA4335" d="M12 5.4c1.6 0 3 .5 4.1 1.6l3.1-3.1C17.4 2.1 14.9 1 12 1 7.8 1 4.1 3.2 2.3 6.9L6 9.8c.9-2.5 3.2-4.4 6-4.4z"/></svg>via Google</small></div></a></article>
+        <article class="tst"><div class="quote">“</div><div class="stars">★★★★★</div><p>A Dra. Vanessa é excelente profissional. Fiz limpeza, restauração e canal, e minha mãe fez implantes, tudo com segurança e qualidade. Agendamento sem complicação. Recomendo muito!</p><a class="who" href="https://maps.app.goo.gl/PB9XBEr9Xc5gciGS8" target="_blank" rel="noopener"><span class="av">A</span><div><b>Alexandre Zambrozuski</b><small><svg viewBox="0 0 24 24" width="13" height="13"><path fill="#4285F4" d="M22.5 12.2c0-.8-.1-1.5-.2-2.2H12v4.2h5.9c-.3 1.4-1 2.5-2.2 3.3v2.8h3.6c2.1-1.9 3.2-4.8 3.2-8.1z"/><path fill="#34A853" d="M12 23c2.9 0 5.4-1 7.2-2.7l-3.6-2.8c-1 .7-2.3 1.1-3.6 1.1-2.8 0-5.1-1.9-6-4.4H2.3v2.9C4.1 20.8 7.8 23 12 23z"/><path fill="#FBBC05" d="M6 14.2c-.2-.7-.4-1.4-.4-2.2s.1-1.5.4-2.2V6.9H2.3C1.5 8.4 1 10.1 1 12s.5 3.6 1.3 5.1L6 14.2z"/><path fill="#EA4335" d="M12 5.4c1.6 0 3 .5 4.1 1.6l3.1-3.1C17.4 2.1 14.9 1 12 1 7.8 1 4.1 3.2 2.3 6.9L6 9.8c.9-2.5 3.2-4.4 6-4.4z"/></svg>via Google</small></div></a></article>
+        <article class="tst"><div class="quote">“</div><div class="stars">★★★★★</div><p>Ótimo atendimento, profissionais competentes. Ambiente limpo, organizado, climatizado e com espaço kids. Estacionamento gratuito. Sou paciente há muitos anos e recomendo.</p><a class="who" href="https://maps.app.goo.gl/PB9XBEr9Xc5gciGS8" target="_blank" rel="noopener"><span class="av">A</span><div><b>Amanda Diel Rodrigues</b><small><svg viewBox="0 0 24 24" width="13" height="13"><path fill="#4285F4" d="M22.5 12.2c0-.8-.1-1.5-.2-2.2H12v4.2h5.9c-.3 1.4-1 2.5-2.2 3.3v2.8h3.6c2.1-1.9 3.2-4.8 3.2-8.1z"/><path fill="#34A853" d="M12 23c2.9 0 5.4-1 7.2-2.7l-3.6-2.8c-1 .7-2.3 1.1-3.6 1.1-2.8 0-5.1-1.9-6-4.4H2.3v2.9C4.1 20.8 7.8 23 12 23z"/><path fill="#FBBC05" d="M6 14.2c-.2-.7-.4-1.4-.4-2.2s.1-1.5.4-2.2V6.9H2.3C1.5 8.4 1 10.1 1 12s.5 3.6 1.3 5.1L6 14.2z"/><path fill="#EA4335" d="M12 5.4c1.6 0 3 .5 4.1 1.6l3.1-3.1C17.4 2.1 14.9 1 12 1 7.8 1 4.1 3.2 2.3 6.9L6 9.8c.9-2.5 3.2-4.4 6-4.4z"/></svg>via Google</small></div></a></article>
+        <article class="tst"><div class="quote">“</div><div class="stars">★★★★★</div><p>Atendimento excepcional e muito profissionalismo durante todo o processo do meu implante dentário, desde a primeira consulta até a finalização. Gratidão à equipe do COP!</p><a class="who" href="https://maps.app.goo.gl/PB9XBEr9Xc5gciGS8" target="_blank" rel="noopener"><span class="av">C</span><div><b>Camel Farah</b><small><svg viewBox="0 0 24 24" width="13" height="13"><path fill="#4285F4" d="M22.5 12.2c0-.8-.1-1.5-.2-2.2H12v4.2h5.9c-.3 1.4-1 2.5-2.2 3.3v2.8h3.6c2.1-1.9 3.2-4.8 3.2-8.1z"/><path fill="#34A853" d="M12 23c2.9 0 5.4-1 7.2-2.7l-3.6-2.8c-1 .7-2.3 1.1-3.6 1.1-2.8 0-5.1-1.9-6-4.4H2.3v2.9C4.1 20.8 7.8 23 12 23z"/><path fill="#FBBC05" d="M6 14.2c-.2-.7-.4-1.4-.4-2.2s.1-1.5.4-2.2V6.9H2.3C1.5 8.4 1 10.1 1 12s.5 3.6 1.3 5.1L6 14.2z"/><path fill="#EA4335" d="M12 5.4c1.6 0 3 .5 4.1 1.6l3.1-3.1C17.4 2.1 14.9 1 12 1 7.8 1 4.1 3.2 2.3 6.9L6 9.8c.9-2.5 3.2-4.4 6-4.4z"/></svg>via Google</small></div></a></article>
+        <article class="tst"><div class="quote">“</div><div class="stars">★★★★★</div><p>Quero parabenizar a equipe pelo ótimo atendimento. Dra. Aicha muito profissional e atenciosa, uma querida. A Isa Neves também prestou um ótimo atendimento.</p><a class="who" href="https://maps.app.goo.gl/PB9XBEr9Xc5gciGS8" target="_blank" rel="noopener"><span class="av">G</span><div><b>Gilcemar Junior</b><small><svg viewBox="0 0 24 24" width="13" height="13"><path fill="#4285F4" d="M22.5 12.2c0-.8-.1-1.5-.2-2.2H12v4.2h5.9c-.3 1.4-1 2.5-2.2 3.3v2.8h3.6c2.1-1.9 3.2-4.8 3.2-8.1z"/><path fill="#34A853" d="M12 23c2.9 0 5.4-1 7.2-2.7l-3.6-2.8c-1 .7-2.3 1.1-3.6 1.1-2.8 0-5.1-1.9-6-4.4H2.3v2.9C4.1 20.8 7.8 23 12 23z"/><path fill="#FBBC05" d="M6 14.2c-.2-.7-.4-1.4-.4-2.2s.1-1.5.4-2.2V6.9H2.3C1.5 8.4 1 10.1 1 12s.5 3.6 1.3 5.1L6 14.2z"/><path fill="#EA4335" d="M12 5.4c1.6 0 3 .5 4.1 1.6l3.1-3.1C17.4 2.1 14.9 1 12 1 7.8 1 4.1 3.2 2.3 6.9L6 9.8c.9-2.5 3.2-4.4 6-4.4z"/></svg>via Google</small></div></a></article>
+        <article class="tst"><div class="quote">“</div><div class="stars">★★★★★</div><p>Experiência excelente! Desde a recepção até o atendimento, fui tratado com muito carinho e cuidado. O ambiente é acolhedor e transmite tranquilidade. Equipe extremamente atenciosa.</p><a class="who" href="https://maps.app.goo.gl/PB9XBEr9Xc5gciGS8" target="_blank" rel="noopener"><span class="av">A</span><div><b>André Haste</b><small><svg viewBox="0 0 24 24" width="13" height="13"><path fill="#4285F4" d="M22.5 12.2c0-.8-.1-1.5-.2-2.2H12v4.2h5.9c-.3 1.4-1 2.5-2.2 3.3v2.8h3.6c2.1-1.9 3.2-4.8 3.2-8.1z"/><path fill="#34A853" d="M12 23c2.9 0 5.4-1 7.2-2.7l-3.6-2.8c-1 .7-2.3 1.1-3.6 1.1-2.8 0-5.1-1.9-6-4.4H2.3v2.9C4.1 20.8 7.8 23 12 23z"/><path fill="#FBBC05" d="M6 14.2c-.2-.7-.4-1.4-.4-2.2s.1-1.5.4-2.2V6.9H2.3C1.5 8.4 1 10.1 1 12s.5 3.6 1.3 5.1L6 14.2z"/><path fill="#EA4335" d="M12 5.4c1.6 0 3 .5 4.1 1.6l3.1-3.1C17.4 2.1 14.9 1 12 1 7.8 1 4.1 3.2 2.3 6.9L6 9.8c.9-2.5 3.2-4.4 6-4.4z"/></svg>via Google</small></div></a></article>
+        <article class="tst"><div class="quote">“</div><div class="stars">★★★★★</div><p>Ótimo atendimento e ótimo serviço, fui muito bem recebido pela Dra. Vanessa e equipe. Indico para todos, inclusive aos pais! Confiança total.</p><a class="who" href="https://maps.app.goo.gl/PB9XBEr9Xc5gciGS8" target="_blank" rel="noopener"><span class="av">V</span><div><b>Víctor Hugo</b><small><svg viewBox="0 0 24 24" width="13" height="13"><path fill="#4285F4" d="M22.5 12.2c0-.8-.1-1.5-.2-2.2H12v4.2h5.9c-.3 1.4-1 2.5-2.2 3.3v2.8h3.6c2.1-1.9 3.2-4.8 3.2-8.1z"/><path fill="#34A853" d="M12 23c2.9 0 5.4-1 7.2-2.7l-3.6-2.8c-1 .7-2.3 1.1-3.6 1.1-2.8 0-5.1-1.9-6-4.4H2.3v2.9C4.1 20.8 7.8 23 12 23z"/><path fill="#FBBC05" d="M6 14.2c-.2-.7-.4-1.4-.4-2.2s.1-1.5.4-2.2V6.9H2.3C1.5 8.4 1 10.1 1 12s.5 3.6 1.3 5.1L6 14.2z"/><path fill="#EA4335" d="M12 5.4c1.6 0 3 .5 4.1 1.6l3.1-3.1C17.4 2.1 14.9 1 12 1 7.8 1 4.1 3.2 2.3 6.9L6 9.8c.9-2.5 3.2-4.4 6-4.4z"/></svg>via Google</small></div></a></article>
+        <article class="tst"><div class="quote">“</div><div class="stars">★★★★★</div><p>Desde o primeiro atendimento por telefone até a colocação do meu aparelho ortodôntico, fui muito bem atendida. A Isa, um carinho gigantesco, e a Dra. Vanessa, excelente profissional.</p><a class="who" href="https://maps.app.goo.gl/PB9XBEr9Xc5gciGS8" target="_blank" rel="noopener"><span class="av">K</span><div><b>Kerollen Priscilla</b><small><svg viewBox="0 0 24 24" width="13" height="13"><path fill="#4285F4" d="M22.5 12.2c0-.8-.1-1.5-.2-2.2H12v4.2h5.9c-.3 1.4-1 2.5-2.2 3.3v2.8h3.6c2.1-1.9 3.2-4.8 3.2-8.1z"/><path fill="#34A853" d="M12 23c2.9 0 5.4-1 7.2-2.7l-3.6-2.8c-1 .7-2.3 1.1-3.6 1.1-2.8 0-5.1-1.9-6-4.4H2.3v2.9C4.1 20.8 7.8 23 12 23z"/><path fill="#FBBC05" d="M6 14.2c-.2-.7-.4-1.4-.4-2.2s.1-1.5.4-2.2V6.9H2.3C1.5 8.4 1 10.1 1 12s.5 3.6 1.3 5.1L6 14.2z"/><path fill="#EA4335" d="M12 5.4c1.6 0 3 .5 4.1 1.6l3.1-3.1C17.4 2.1 14.9 1 12 1 7.8 1 4.1 3.2 2.3 6.9L6 9.8c.9-2.5 3.2-4.4 6-4.4z"/></svg>via Google</small></div></a></article>
+        <article class="tst"><div class="quote">“</div><div class="stars">★★★★★</div><p>Ambiente incrível, recepção maravilhosa, preço justo e excelente trabalho da Dra. Aicha. Recomendadíssimo, parabéns!</p><a class="who" href="https://maps.app.goo.gl/PB9XBEr9Xc5gciGS8" target="_blank" rel="noopener"><span class="av">A</span><div><b>Adriano Frederiko</b><small><svg viewBox="0 0 24 24" width="13" height="13"><path fill="#4285F4" d="M22.5 12.2c0-.8-.1-1.5-.2-2.2H12v4.2h5.9c-.3 1.4-1 2.5-2.2 3.3v2.8h3.6c2.1-1.9 3.2-4.8 3.2-8.1z"/><path fill="#34A853" d="M12 23c2.9 0 5.4-1 7.2-2.7l-3.6-2.8c-1 .7-2.3 1.1-3.6 1.1-2.8 0-5.1-1.9-6-4.4H2.3v2.9C4.1 20.8 7.8 23 12 23z"/><path fill="#FBBC05" d="M6 14.2c-.2-.7-.4-1.4-.4-2.2s.1-1.5.4-2.2V6.9H2.3C1.5 8.4 1 10.1 1 12s.5 3.6 1.3 5.1L6 14.2z"/><path fill="#EA4335" d="M12 5.4c1.6 0 3 .5 4.1 1.6l3.1-3.1C17.4 2.1 14.9 1 12 1 7.8 1 4.1 3.2 2.3 6.9L6 9.8c.9-2.5 3.2-4.4 6-4.4z"/></svg>via Google</small></div></a></article>
+        <article class="tst"><div class="quote">“</div><div class="stars">★★★★★</div><p>Clínica maravilhosa, ambiente aconchegante e muito receptivo. Os profissionais são altamente qualificados, atenciosos e prestativos. Recomendo, pode confiar.</p><a class="who" href="https://maps.app.goo.gl/PB9XBEr9Xc5gciGS8" target="_blank" rel="noopener"><span class="av">C</span><div><b>Cláudia Silvia Nascimento</b><small><svg viewBox="0 0 24 24" width="13" height="13"><path fill="#4285F4" d="M22.5 12.2c0-.8-.1-1.5-.2-2.2H12v4.2h5.9c-.3 1.4-1 2.5-2.2 3.3v2.8h3.6c2.1-1.9 3.2-4.8 3.2-8.1z"/><path fill="#34A853" d="M12 23c2.9 0 5.4-1 7.2-2.7l-3.6-2.8c-1 .7-2.3 1.1-3.6 1.1-2.8 0-5.1-1.9-6-4.4H2.3v2.9C4.1 20.8 7.8 23 12 23z"/><path fill="#FBBC05" d="M6 14.2c-.2-.7-.4-1.4-.4-2.2s.1-1.5.4-2.2V6.9H2.3C1.5 8.4 1 10.1 1 12s.5 3.6 1.3 5.1L6 14.2z"/><path fill="#EA4335" d="M12 5.4c1.6 0 3 .5 4.1 1.6l3.1-3.1C17.4 2.1 14.9 1 12 1 7.8 1 4.1 3.2 2.3 6.9L6 9.8c.9-2.5 3.2-4.4 6-4.4z"/></svg>via Google</small></div></a></article>
+        <article class="tst"><div class="quote">“</div><div class="stars">★★★★★</div><p>Profissionais muito capacitados. Cuidado desde o atendimento, orçamento, procedimento e pós-atendimento. Transmitem muita confiança e segurança em algo tão importante: a saúde.</p><a class="who" href="https://maps.app.goo.gl/PB9XBEr9Xc5gciGS8" target="_blank" rel="noopener"><span class="av">V</span><div><b>Victoria Silvestre</b><small><svg viewBox="0 0 24 24" width="13" height="13"><path fill="#4285F4" d="M22.5 12.2c0-.8-.1-1.5-.2-2.2H12v4.2h5.9c-.3 1.4-1 2.5-2.2 3.3v2.8h3.6c2.1-1.9 3.2-4.8 3.2-8.1z"/><path fill="#34A853" d="M12 23c2.9 0 5.4-1 7.2-2.7l-3.6-2.8c-1 .7-2.3 1.1-3.6 1.1-2.8 0-5.1-1.9-6-4.4H2.3v2.9C4.1 20.8 7.8 23 12 23z"/><path fill="#FBBC05" d="M6 14.2c-.2-.7-.4-1.4-.4-2.2s.1-1.5.4-2.2V6.9H2.3C1.5 8.4 1 10.1 1 12s.5 3.6 1.3 5.1L6 14.2z"/><path fill="#EA4335" d="M12 5.4c1.6 0 3 .5 4.1 1.6l3.1-3.1C17.4 2.1 14.9 1 12 1 7.8 1 4.1 3.2 2.3 6.9L6 9.8c.9-2.5 3.2-4.4 6-4.4z"/></svg>via Google</small></div></a></article>
+        <article class="tst"><div class="quote">“</div><div class="stars">★★★★★</div><p>Fiz todo o tratamento de implante até a restauração, super bem atendido, ótimas profissionais.</p><a class="who" href="https://maps.app.goo.gl/PB9XBEr9Xc5gciGS8" target="_blank" rel="noopener"><span class="av">E</span><div><b>Edson Luciano</b><small><svg viewBox="0 0 24 24" width="13" height="13"><path fill="#4285F4" d="M22.5 12.2c0-.8-.1-1.5-.2-2.2H12v4.2h5.9c-.3 1.4-1 2.5-2.2 3.3v2.8h3.6c2.1-1.9 3.2-4.8 3.2-8.1z"/><path fill="#34A853" d="M12 23c2.9 0 5.4-1 7.2-2.7l-3.6-2.8c-1 .7-2.3 1.1-3.6 1.1-2.8 0-5.1-1.9-6-4.4H2.3v2.9C4.1 20.8 7.8 23 12 23z"/><path fill="#FBBC05" d="M6 14.2c-.2-.7-.4-1.4-.4-2.2s.1-1.5.4-2.2V6.9H2.3C1.5 8.4 1 10.1 1 12s.5 3.6 1.3 5.1L6 14.2z"/><path fill="#EA4335" d="M12 5.4c1.6 0 3 .5 4.1 1.6l3.1-3.1C17.4 2.1 14.9 1 12 1 7.8 1 4.1 3.2 2.3 6.9L6 9.8c.9-2.5 3.2-4.4 6-4.4z"/></svg>via Google</small></div></a></article>
+      </div>
+      <div class="tc-nav">
+        <button class="tc-btn" id="tstPrev" aria-label="Avaliação anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 6l-6 6 6 6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <button class="tc-btn" id="tstNext" aria-label="Próxima avaliação"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:18px" class="reveal">
+      <a class="btn btn-ghost" href="https://maps.app.goo.gl/PB9XBEr9Xc5gciGS8" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" width="18" height="18"><path fill="#4285F4" d="M22.5 12.2c0-.8-.1-1.5-.2-2.2H12v4.2h5.9c-.3 1.4-1 2.5-2.2 3.3v2.8h3.6c2.1-1.9 3.2-4.8 3.2-8.1z"/><path fill="#34A853" d="M12 23c2.9 0 5.4-1 7.2-2.7l-3.6-2.8c-1 .7-2.3 1.1-3.6 1.1-2.8 0-5.1-1.9-6-4.4H2.3v2.9C4.1 20.8 7.8 23 12 23z"/><path fill="#FBBC05" d="M6 14.2c-.2-.7-.4-1.4-.4-2.2s.1-1.5.4-2.2V6.9H2.3C1.5 8.4 1 10.1 1 12s.5 3.6 1.3 5.1L6 14.2z"/><path fill="#EA4335" d="M12 5.4c1.6 0 3 .5 4.1 1.6l3.1-3.1C17.4 2.1 14.9 1 12 1 7.8 1 4.1 3.2 2.3 6.9L6 9.8c.9-2.5 3.2-4.4 6-4.4z"/></svg>
+        Ver todas as avaliações no Google
+      </a>
     </div>
   </div>
 </section>
@@ -945,6 +957,15 @@ if(tcTrack){
   const p=document.getElementById('tcPrev'),n=document.getElementById('tcNext');
   if(p)p.onclick=()=>tcTrack.scrollBy({left:-step(),behavior:'smooth'});
   if(n)n.onclick=()=>tcTrack.scrollBy({left:step(),behavior:'smooth'});
+}
+
+// testimonials carousel
+const tstTrack=document.getElementById('tstTrack');
+if(tstTrack){
+  const step=()=>{const c=tstTrack.querySelector('.tst');return c?c.getBoundingClientRect().width+24:340};
+  const p=document.getElementById('tstPrev'),n=document.getElementById('tstNext');
+  if(p)p.onclick=()=>tstTrack.scrollBy({left:-step(),behavior:'smooth'});
+  if(n)n.onclick=()=>tstTrack.scrollBy({left:step(),behavior:'smooth'});
 }
 
 // before/after sliders
