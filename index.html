@@ -1032,7 +1032,14 @@ header.scrolled .logo-img{height:46px}
 // Os scripts de rastreamento so carregam APOS o consentimento.
 function loadTracking(){
   if(window.__copTracking)return; window.__copTracking=true;
-  // >>> Quando os IDs chegarem, os snippets de GTM / GA4 / Meta Pixel entram AQUI <<<
+
+  // Google Tag Manager (carrega apos consentimento)
+  (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});
+  var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;
+  j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-NK8ZKXGV');
+
+  // >>> GA4 (G-XXXXXXXXXX) e Meta Pixel entram AQUI quando os IDs chegarem <<<
 }
 (function(){
   var KEY='cop_cookie_consent';
