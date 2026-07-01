@@ -368,6 +368,28 @@ nav.main a.nl:hover::after{width:100%}
 .ba-cap span{font-size:.84rem;color:var(--espresso-soft)}
 @media(max-width:760px){.ba-grid{grid-template-columns:1fr;max-width:400px;gap:46px}}
 
+/* ============== VIDEO DEPOIMENTO ============== */
+.vid-feature{display:grid;grid-template-columns:.82fr 1.18fr;gap:46px;align-items:center;
+  max-width:960px;margin:0 auto clamp(42px,6vw,66px)}
+.vid-player{position:relative;aspect-ratio:9/16;border-radius:22px;overflow:hidden;
+  box-shadow:var(--shadow-lg);border:6px solid #fff;background:linear-gradient(160deg,var(--wine),var(--mauve))}
+.vid-player video,.vid-player iframe{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border:0}
+.vid-ph{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:14px;color:#fff;text-align:center;padding:20px}
+.vid-ph::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 42%,transparent 30%,rgba(54,32,42,.25))}
+.vid-play{position:relative;z-index:1;width:74px;height:74px;border-radius:50%;background:rgba(255,255,255,.16);
+  border:2px solid rgba(255,255,255,.55);display:grid;place-items:center;backdrop-filter:blur(3px);
+  animation:pulse 2.4s infinite}
+.vid-play svg{width:30px;height:30px;margin-left:5px}
+.vid-label{position:relative;z-index:1;font-family:var(--serif);font-size:1.25rem}
+.vid-sub{position:relative;z-index:1;font-size:.64rem;letter-spacing:.22em;text-transform:uppercase;opacity:.82}
+.vid-text .eyebrow{justify-content:flex-start}
+.vid-text h3{font-size:clamp(1.8rem,3.6vw,2.7rem);color:var(--wine);line-height:1.1;margin:14px 0 14px}
+.vid-text p{color:var(--espresso-soft);max-width:42ch;margin-bottom:26px;font-size:1.02rem}
+@media(max-width:760px){.vid-feature{grid-template-columns:1fr;gap:22px;max-width:340px}
+  .vid-text{text-align:center}.vid-text p{margin-left:auto;margin-right:auto}
+  .vid-text .eyebrow,.vid-text .hero-actions{justify-content:center}}
+
 /* ============== TESTIMONIALS ============== */
 .tst-track{display:flex;gap:24px;overflow-x:auto;scroll-snap-type:x mandatory;padding:8px 4px 26px;
   scroll-behavior:smooth;-webkit-overflow-scrolling:touch;scrollbar-width:none}
@@ -823,6 +845,29 @@ header.scrolled .logo-img{height:46px}
       <h2>Nota <span class="script">4,8</span> de quem confiou</h2>
       <p>Avaliações reais de quem já passou pela COP, e voltou a sorrir.</p>
     </div>
+
+    <div class="vid-feature reveal">
+      <div class="vid-player">
+        <!-- placeholder: substituir por <video controls playsinline poster="..."><source src="assets/depoimento.mp4" type="video/mp4"></video> ou um <iframe> do YouTube/Vimeo -->
+        <div class="vid-ph">
+          <span class="vid-play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
+          <span class="vid-label">Depoimento em vídeo</span>
+          <span class="vid-sub">em breve</span>
+        </div>
+      </div>
+      <div class="vid-text">
+        <span class="eyebrow">Histórias reais</span>
+        <h3>Quem confiou, <span class="script" style="color:var(--caramel)">voltou a sorrir</span></h3>
+        <p>Assista ao depoimento de uma paciente que transformou o sorriso na COP — e veja por que somos referência em Palhoça.</p>
+        <div class="hero-actions">
+          <a class="btn btn-wa" href="https://wa.me/5548996357971?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o." target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M.06 24l1.7-6.2A11.9 11.9 0 1 1 12 24a11.9 11.9 0 0 1-5.7-1.46L.06 24zM6.6 20.1l.37.22a9.9 9.9 0 0 0 5.04 1.38 9.9 9.9 0 1 0-8.4-4.66l.24.38-1 3.65 3.75-.97z"/></svg>
+            Quero ser o próximo sorriso
+          </a>
+        </div>
+      </div>
+    </div>
+
     <div class="tst-carousel reveal">
       <div class="tst-track" id="tstTrack">
         <article class="tst"><div class="quote">“</div><div class="stars">★★★★★</div><p>Procurei a clínica com dor e fui atendida com muita rapidez e profissionalismo pela Dra. Vanessa, especialista em canal e prótese. Me senti segura e confiante. Adorei o ambiente e o atendimento. Super indico!</p><a class="who" href="https://maps.app.goo.gl/PB9XBEr9Xc5gciGS8" target="_blank" rel="noopener"><span class="av">A</span><div><b>Adriana Feijó</b><small><svg viewBox="0 0 24 24" width="13" height="13"><path fill="#4285F4" d="M22.5 12.2c0-.8-.1-1.5-.2-2.2H12v4.2h5.9c-.3 1.4-1 2.5-2.2 3.3v2.8h3.6c2.1-1.9 3.2-4.8 3.2-8.1z"/><path fill="#34A853" d="M12 23c2.9 0 5.4-1 7.2-2.7l-3.6-2.8c-1 .7-2.3 1.1-3.6 1.1-2.8 0-5.1-1.9-6-4.4H2.3v2.9C4.1 20.8 7.8 23 12 23z"/><path fill="#FBBC05" d="M6 14.2c-.2-.7-.4-1.4-.4-2.2s.1-1.5.4-2.2V6.9H2.3C1.5 8.4 1 10.1 1 12s.5 3.6 1.3 5.1L6 14.2z"/><path fill="#EA4335" d="M12 5.4c1.6 0 3 .5 4.1 1.6l3.1-3.1C17.4 2.1 14.9 1 12 1 7.8 1 4.1 3.2 2.3 6.9L6 9.8c.9-2.5 3.2-4.4 6-4.4z"/></svg>via Google</small></div></a></article>
