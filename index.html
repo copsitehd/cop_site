@@ -1039,7 +1039,17 @@ function loadTracking(){
   j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
   })(window,document,'script','dataLayer','GTM-NK8ZKXGV');
 
-  // >>> GA4 (G-XXXXXXXXXX) e Meta Pixel entram AQUI quando os IDs chegarem <<<
+  // Google Analytics 4 (gtag.js) - disparo direto
+  var ga=document.createElement('script');ga.async=true;
+  ga.src='https://www.googletagmanager.com/gtag/js?id=G-Q1YZEP1EVB';
+  document.head.appendChild(ga);
+  window.dataLayer=window.dataLayer||[];
+  function gtag(){dataLayer.push(arguments);}
+  window.gtag=gtag;
+  gtag('js',new Date());
+  gtag('config','G-Q1YZEP1EVB');
+
+  // >>> Meta Pixel entra AQUI quando o ID chegar <<<
 }
 (function(){
   var KEY='cop_cookie_consent';
